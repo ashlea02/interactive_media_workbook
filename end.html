@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>end</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    <!-- AUDIO -->
+  <audio loop autoplay>
+    <source src="audio/windchimes_02.mp3" type="audio/mpeg"> </audio>
+  <!-- Add controls or custom UI for the audio player -->
+</header>
+<body>
+
+<div>
+    <h1 class="centred-text"><p>you aren't welcome here. come back in 6 weeks.</p></h1>
+</div>
+
+<div>
+    <h1 class="return-home"><a href="index.html"><p>return home ▶</p></a></h1>     
+</div>
+
+<!-- Overlay to capture mouse events -->
+<div id="overlay"></div>
+    <div>
+      <img id="followImage" src="images/flashlight_2.1.png" style="position: absolute;">
+    </div>
+     <!-- play with size of the continer, also maybe need to modify the code. ask AI something like why are my pixel values resetting when the cursor exits the viewport -->
+
+    <script>
+        // Get the image element
+        var image = document.getElementById('followImage');
+      
+        // Set initial position
+        var imageWidth = image.width / 2;
+        var imageHeight = image.height / 2;
+      
+        // Update image position on mousemove
+        document.addEventListener('mousemove', function(event) {
+          // Calculate mouse position relative to the document
+          var mouseX = event.pageX;
+          var mouseY = event.pageY;
+      
+          updateImagePosition(mouseX, mouseY);
+        });
+      
+        // Update image position on scroll
+        document.addEventListener('scroll', function(event) {
+          // Calculate current mouse position relative to the document
+          var mouseX = event.clientX + window.pageXOffset;
+          var mouseY = event.clientY + window.pageYOffset;
+      
+          updateImagePosition(mouseX, mouseY);
+        });
+      
+        // Update image position
+        function updateImagePosition(mouseX, mouseY) {
+          image.style.left = mouseX + 'px';
+          image.style.top = mouseY + 'px';
+        }
+      </script>
+
+
+
+<style>
+body{
+    overflow: hidden;
+  }
+</style>
+
+</body>
+</html>

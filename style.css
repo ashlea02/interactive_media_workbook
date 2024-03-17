@@ -1,0 +1,139 @@
+/*font*/
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 10vw;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+   
+    
+}
+
+#followImage {
+    transform: translate(-50%, -50%);
+pointer-events: none;
+
+}
+
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+  }
+  
+
+
+/*text*/
+.beginning {
+      position: absolute;
+      top: 80vh;
+      left: 50vw;
+      
+}
+
+.middle {
+      position: absolute;
+      top: 15vh;
+      left: 10vw;
+      }
+    
+.end {
+      position: absolute;
+      top: 40vh;
+      left: 90vw;
+    }
+
+.centred-text {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  filter: blur(.3em); /* Apply blur effect initially */
+  transition: filter 0.5s cubic-bezier(1,1,1,1); /* Gradual transition */
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.return-home {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  filter: blur(.3em); /* Apply blur effect initially */
+  transition: filter 0.5s cubic-bezier(1,1,1,1); /* Gradual transition */
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.return-home-bottomleft {
+  transform: translate (-100%, -100%);
+  position: fixed;
+  top: 80vh;
+  left: 80vw;
+  text-align: right;
+  line-height: 1.5em;
+}
+
+.lights-on {
+  transform: translate (-100%, -100%);
+  position: fixed;
+  top: 80vh;
+  left: 20vw;
+  text-align: right;
+  line-height: 1.5em;
+}
+
+
+.beginning,
+.middle,
+.end  {
+  position: absolute;
+  filter: blur(.3em); /* Apply blur effect initially */
+  transition: filter 0.5s cubic-bezier(1,1,1,1); /* Gradual transition */
+}
+
+.beginning:hover,
+.middle:hover,
+.end:hover,
+.centred-text:hover,
+.return-home:hover {
+  filter: blur(0); /* Remove blur effect on hover */
+}
+
+
+.black-rectangle {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        animation: fade 5s forwards; /* Applying the fade animation */
+        animation-delay: .25s;
+        pointer-events: none;
+    }
+    
+    @keyframes fade {
+        0% {
+            opacity: 1; /* Initial opacity */
+        }
+        100% {
+            opacity: 0; /* Disappear */
+        }
+}
+
+ 
+
+
+/* Apply initial styles to elements */
+.reveal-item {
+  opacity: 0;
+  filter: blur(10px); /* Initial blur effect */
+  transition: opacity 0.5s, filter 0.5s; /* Smooth transition for opacity and blur */
+}
+
+/* Apply styles when elements are visible */
+.reveal-item.visible {
+  opacity: 1;
+  filter: blur(0); /* Remove blur effect when element is visible */
+}
