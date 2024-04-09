@@ -1,0 +1,130 @@
+/* MODIFIED CHAT GPT CODE */
+
+/*font*/
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 10vw;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+   
+    
+}
+
+#followImage {
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: opacity 1s;
+    opacity: 1;
+    z-index: 2;
+}
+
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+  }
+  
+
+
+/*text*/
+.beginning {
+      position: absolute;
+          
+}
+
+.middle {
+      position: absolute;
+      
+}
+    
+.end {
+      position: absolute;
+      
+}
+
+
+.centred-text {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  filter: blur(.3em); /* Apply blur effect initially */
+  transition: filter 0.5s cubic-bezier(1,1,1,1); /* Gradual transition */
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.return-home {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  filter: blur(.3em); /* Apply blur effect initially */
+  transition: filter 0.5s cubic-bezier(1,1,1,1); /* Gradual transition */
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.return-home-bottomleft {
+  transform: translate (-100%, -100%);
+  position: fixed;
+  top: 80vh;
+  left: 80vw;
+  text-align: right;
+  line-height: 1.5em;
+}
+
+/*.lights-on {
+  transform: translate (-100%, -100%);
+  position: fixed;
+  top: 80vh;
+  left: 20vw;
+  text-align: right;
+  line-height: 1.5em;
+}*/
+
+
+.beginning,
+.middle,
+.end  {
+  position: absolute;
+  filter: blur(.3em); /* Apply blur effect initially */
+  transition: filter 0.5s cubic-bezier(1,1,1,1); /* Gradual transition */
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.beginning:hover,
+.middle:hover,
+.end:hover,
+.centred-text:hover,
+.return-home:hover {
+  filter: blur(0); /* Remove blur effect on hover */
+}
+
+
+.black-rectangle {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        animation: fade 5s forwards; /* Applying the fade animation */
+        animation-delay: .25s;
+        pointer-events: none;
+        z-index: 3;
+    }
+    
+    @keyframes fade {
+        0% {
+            opacity: 1; /* Initial opacity */
+        }
+        100% {
+            opacity: 0; /* Disappear */
+        }
+}
+
+
+
