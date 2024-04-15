@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interactive Media Workbook 2024</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+  body{
+    overflow: hidden;
+     }
+  html, body {
+  margin: 0;
+  padding: 0;
+}
+</style>
+
+<!-- LOAD P5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<!-- LOAD P5 SOUND -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+<!-- LOAD P5 SPEECH -->
+<script src="https://idmnyu.github.io/p5.js-speech/p5.speech.js"></script>
+
+</head>
+
+<body> 
+
+
+<!-- TEXT TO SPEECH -->
+<!-- CODE BY HAO https://editor.p5js.org/hao/sketches/8OhA3cn1J -->
+<script>
+    
+    let speech;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  speech = new p5.Speech(voiceReady); // Pass voiceReady as the callback function
+  speech.started(startSpeaking);
+}
+
+function startSpeaking() {
+  background(225, 255, 0);
+}
+
+// Add the voiceReady function here
+function voiceReady() {
+  console.log(speech.voices);
+}
+
+function mousePressed() {
+  speech.speak('coding train');
+}
+
+function draw() {
+  background(225, 255, 0);
+}
+
+// https://idmnyu.github.io/p5.js-speech/
+</script>
+
+
+</body>
+</html>
+
