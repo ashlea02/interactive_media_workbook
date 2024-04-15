@@ -1,0 +1,7 @@
+//Allow sound to ensure sound plays
+//MODIFIED COPILOT CODE
+
+document.getElementById('allowSound').addEventListener('click', function() {
+  var sound = document.getElementById('windchimes');
+  sound.play();
+});
