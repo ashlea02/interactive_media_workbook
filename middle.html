@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>middle</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            box-sizing: border-box;
+            height: 100vh;
+            width: 100vw;
+            background-color: #f0f0f0; 
+            overflow-x: hidden;
+            padding-left: 5vw;
+            padding-right: 5vw;
+            padding-bottom: 5vw;
+            padding-top: 5vw;
+        }
+       
+       #followFlashlight {
+            transition: opacity 1s;
+        }
+      
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;   
+            background: transparent;
+        }
+      
+        .grid-item {
+           transition: transform 2s;  /* cubic-bezier(1, 1, 1, 1) box-shadow 0.5s; */
+           /* transition-delay: .1s; 
+            background: transparent; */
+            text-shadow: #f0f0f0;
+            padding: 70px;
+        }
+      
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            background: transparent;
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, .75);
+            transition: transform 2s ease-in-out, box-shadow 0.5s ease-out;
+        }
+      
+        .double-column {
+            grid-column: span 2;
+        }
+          
+      
+
+        .grid-item img:hover {
+            box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, .75);
+            
+            transform: scale(1.06);
+            
+        }
+
+        
+        .grid-item a img:hover {
+            box-shadow: 5px 5px 20px 0px rgba(0, 0, 255, 0.75);
+            
+            transform: scale(1.06);
+            
+        }
+               
+        .grid-item .caption {
+            text-shadow: 1px 1px 3px #f0f0f0;
+            background-color: #f0f0f0;
+            font-size: 1.2em;
+            font-family: 'Arial', sans-serif;
+            
+        }
+
+        .grid-item .caption:hover {
+            transform: none;
+            color: inherit;
+            background-color: inherit;
+            box-shadow: none;
+        }
+            
+        /* Staggering rows */
+        .grid-item:nth-child(5n+1) {
+        grid-row: span 1;
+        margin-top: 18vh;
+        }
+
+        .grid-item:nth-child(3n+2) {
+        grid-row: span 1;
+        margin-top: 24vh; /* Offset the staggered row */
+        }
+
+        .iframe-wrapper {
+            position: relative;
+        }
+        
+        .iframe-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .no-hover:hover {
+            transform: none;
+        }
+    
+        .grid-item.no-hover h1 a {
+        text-decoration: underline;
+        }
+     
+        /* POPUP FEATURE BY MATILDA SUTHERLAND, MODIFIED WITH COPILOT */
+        .popUp {
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        position: fixed;
+        z-index: 100;
+        top: 50%;
+        left: 50%;  
+        width: 90vw;
+        height: 90vh;    
+        object-fit: contain;
+        
+      }      
+
+
+      .hidden {
+        display: none;
+      }
+    
+      </style>
+     
+
+
+
+</head>
+<body>
+
+    
+<!-- AUDIO -->
+    <audio loop autoplay>
+        <source src="audio/windchimes_02.mp3" type="audio/mpeg"> <!--source: https://freesound.org/people/Philip_Goddard/packs/10521/-->
+    </audio> 
+    <audio id="torchSound" src="audio/torch_switch_01.mp3" preload="auto"></audio> <!--source: https://freesound.org/people/ryanconway/sounds/260741/-->
+
+<!-- LOAD P5 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>-->
+
+<!-- LOAD P5 SOUND 
+<script src="https://idmnyu.github.io/p5.js-speech/p5.speech.js"></script>-->
+
+<!-- LOAD P5 SPEECH 
+<script src="https://cdn.jsdelivr.net/gh/IDMNYU/p5.js-speech@0.0.3/lib/p5.speech.js"></script>-->
+
+
+<!-- FLASHLIGHT FUNCTIONS 
+    <div id="overlay"></div>  
+    <div>
+        <img id="followFlashlight" src="images/flashlight_2.1.png" style="position: absolute;">
+    </div>
+
+    <script src="javascript/flashlight.js"></script>
+    <script src="javascript/toggle_flashlight.js"></script> -->
+
+    <div class="black-rectangle"></div> <!-- fade in animation 
+
+    <h2 id="toggleLightsText" >toggle lights 🅃</h2> <!-- toggle lights label -->
+
+
+
+<!-- NAVIGATION -->    
+<div>
+    <h2 id="returnHomeBottomRight"><a href="home.html">return home ▶</a></h2>     
+  </div>
+
+<!-- PAGE CONTENTS -->
+    <div class="container">
+        <div class="grid-item no-hover">
+            <h1>★ randomising the position of text is something p5.js allowed me to do, and it made the navigation of the home page unique every time the user visits.</h1>
+        </div>
+
+        <div class="grid-item">
+            <img src="images/B_IMAGES/randomisation_1.png" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">★ failed position randomisation trial, the words were leaving the viewport. the default (img credit: me)</div>
+        </div>   
+       
+        <div class="grid-item">
+            <img src="images/B_IMAGES/randomisation_4.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">★ i linked previously set hover styles to my javascript (img credit: me)</div>
+        </div>
+        
+        <div class="grid-item">
+            <img src="images/B_IMAGES/randomisation_2.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">★ the words were moving in the same direction and speed, i knew i could do better (img credit: me)</div>
+        </div>
+       
+        <div class="grid-item">
+            <img src="images/B_IMAGES/randomisation_3.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">★ the words were moving at different speeds but from the same point (img credit: me)</div>
+        </div>
+        
+
+        <div class="grid-item no-hover">
+            <img src="images/B_IMAGES/randomisation_5.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">★ these words are too fast to catch (img credit: me)</div>
+        </div>
+        
+
+        <div class="grid-item no-hover">
+            <a href="text_to_speech.html" target="_blank"><img src="images/B_IMAGES/text_to_speech_.gif" alt="" onclick="toggleHidden(this.src)"></a>
+            <div class="caption">a javascript that i almost got working, it cut off after a certain amount of words, and I couldn't get it to activate in an iframe, so I linked it instead</div>
+        </div>
+       
+
+        <div class="grid-item no-hover">
+            <h1>♥ a big part of the feedback i recieved was that my images should have an enlarge feature, so this is what i started working on. i needed to also create a hover effect to indacte they can be enlarged</h1> 
+        </div>
+
+        <div class="grid-item">
+          <img src="images/B_IMAGES/grid_interaction.gif" alt="" onclick="toggleHidden(this.src)">
+          <div class="caption">♥ i created shadow effects on hover, at this stage they were far too choppy (img credit: me) </div>
+        </div>
+       
+
+        <div class="grid-item">
+            <img src="images/B_IMAGES/grid_interaction_2.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">♥ these shadows soon became too clunky when i offset my grid (img credit: me)</div>
+        </div>  
+       
+
+        <div class="grid-item">
+            <img src="images/B_IMAGES/grid_interaction_3.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">♥ i used a scaling effect instead, which was less clunky. i gave the text a white drop shadow if it overlapped dark images when it enlarged (img credit: me)</div>
+        </div>
+        
+
+        <div class="grid-item">
+            <img src="images/B_IMAGES/grid_interaction_1.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">♥ i attempted creating an enlarge feature, but struggled with its position and movement (img credit: me) </div>
+          </div>
+         
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/grid_interaction_4.png" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">♥ the offset grid was feeling cluttered so i upped the padding (img credit: me) </div>
+          </div>
+          
+
+        <div class="grid-item">
+            <div class="iframe-wrapper">
+                <iframe src="javascript/pie_chart_experiment.js" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="grid-item no-hover">
+            <h1>◆ other feedback i recieved told me to create a toggle lights feature. i'd tried this previously, but after knowing that it was as simple as disabling a div, this is what i did</h1> 
+        </div>
+
+        
+        <div class="grid-item">
+            <img src="images/B_IMAGES/return_home_button.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">◆ part of toggling the lights was telling the user how to do it. additionally, this instructional text had to contrast the background so when the T key is pressed, text colour is also toggled (img credit: me)</div>
+          </div>
+         
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/flashlight_functions .png" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">◆ the T key ended up determining three things: flashlight visibility, flashlight sound, and colour of the footer elements (img credit: me)</div>
+          </div>
+        
+
+          <div class="grid-item no-hover">
+            <h1>▶ after encountering autoplay issues with my sound, i found out that a user must click a webpage before autoplay is permitted. i played around with javascripts to gain permission from the user for sound to be played but soon realised it was easier to have them click a dummy button which then directed them to the rest of my site.</h1> 
+        </div>
+
+        <div class="grid-item">
+            <a href="https://developer.chrome.com/blog/autoplay" target="_blank" title="open blog post"><img src="images/B_IMAGES/auto_play.png"></img></a>
+            <div class="caption">▶ Autoplay policy in Chrome, François Beaufort, blog</div>
+            </div>
+            
+
+            <div class="grid-item">
+                <img src="images/B_IMAGES/autoplay.jpg" alt="" onclick="toggleHidden(this.src)">
+                <div class="caption">▶ i decided on creating a landing page that ensures the user allows sound (img credit: me)</div>
+              </div> 
+             
+
+            <div class="grid-item">
+                <img src="images/B_IMAGES/allow_sound.gif" alt="" onclick="toggleHidden(this.src)">
+                <div class="caption">▶ on my index.html, i designed a simple button with hover effects. it takes the user to home.html, whilst gaining that 'click' needed for autoplay permissions (img credit: me)</div>
+              </div>
+           
+
+
+          <div class="grid-item no-hover">
+            <h1>▲ part of my site included the other sections. since '<a href="end.html" title="end.html" target="_blank">end</a>' was still not populated with content, i wanted to add a countdown until it would be released.</h1>  
+        </div>
+
+        <div class="grid-item">
+            <img src="images/B_IMAGES/countdown_1.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">▲ countdown - i struggled to apply the correct styling to the countdown that was seen across the rest of my site (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/countdown_2.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">▲ countdown - i tried getting the countdown to move around, but my scripts were interacting incorrectly and created this monstrosity (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/countdown_3.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">▲ this is where i gave up on getting the elements to move on my 'end' page, i opted for static instead (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/IMG_0760.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">stamps at a swap meet, i liked their colours (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/IMG_0767.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">lights and electronics for cars at a swap meet. the way they were laid out struck me - they were neat and looked so shiny against the blue. i couldn't help but feel how digital it was (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/IMG_0770.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">car badges at a swap meet (too many for them not to be stolen). this looked exactly like a p5.js sketch, with random fonts, orientations, positioning and sizes (img credit: me)</div>
+          </div>
+
+          <div class="grid-item double-column">
+            <img src="images/B_IMAGES/organisation_activity.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">a workshop on how to organise things. (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/luminous_1.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">luminous, state library, 2024 (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/luminous_2.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">luminous, state library, 2024 (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/luminous_3.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">luminous, state library, 2024 (img credit: me)</div>
+          </div>
+
+          <div class="grid-item">
+            <img src="images/B_IMAGES/luminous_4.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">luminous, state library, 2024 (img credit: me)</div>
+          </div>
+
+                         
+        <div class="grid-item">
+            <img src="images/B_IMAGES/sound_mixer.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">while the sound on my website is part of the experience, it can drive you crazy. i tried working with a volume function, but couldn't get it to work (img credit: me)</div>
+        </div>
+        
+        <div class="grid-item">
+            <img src="images/B_IMAGES/pie_chart.gif" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">● progress on the pie chart - at one point the segments were overalapping which i later fixed (img credit: me)</div>
+        </div>
+           
+        <div class="grid-item">
+            <a href="pie_chart_experiment/pie_chart_index.html" target="_blank"><img src="images/B_IMAGES/pie_chart_final.gif" alt="" title="open pie chart sketch" >
+            <div class="caption">● final pie chart sketch (img credit: me)</div></a>
+        </div>
+
+        <div class="grid-item">
+            <img src="images/B_IMAGES/scrollbar.png" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">to further customise my site, i added a scroll bar that is more on theme (img credit: me)</div>
+
+        
+<!-- POPPED OUT IMG DYNAMIC DISPLAY -->
+        <img class="hidden popUp" src="" alt="" onclick="toggleHidden()">
+    </div>
+
+   
+
+
+<!-- POPPED OUT IMG -->
+<!-- CODE BY MATILDA SUTHERLAND https://matildasutho.github.io/InteractiveMedia2024/Week3/index.html, MODIFIED WITH COPILOT -->
+
+    <script>
+    function toggleHidden(imgSrc) {
+    var element = document.querySelector(".popUp");
+    element.src = imgSrc;
+    if (!element.classList.contains("hidden")) {
+      element.classList.add("hidden");
+    } else {
+      element.classList.toggle("hidden");
+    }
+  }
+ 
+    </script>
+ 
+
+
+</body>
+
+
+</html>
