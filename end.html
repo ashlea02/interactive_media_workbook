@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>end</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body{
+          overflow: hidden;
+        }
+
+  </style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+   <audio loop autoplay>
+    <source src="audio/windchimes_02.mp3" type="audio/mpeg"> </audio>
+
+    <audio id="torchSound" src="audio/torch_switch_01.mp3" preload="auto"></audio>
+<!-- LOAD PJ.5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+<!-- COUNTDOWN SCRIPT -->
+ <script src="javascript/countdown_code.js"></script>
+
+<!-- RANDOMISED TEXT 
+    <script src="javascript/randomisedTxt_end.js"></script> -->
+
+<div class="centred-text"><h1>you are not yet welcome here</h1></div>
+  <div id="countdown" class="countdown-container">
+  <p class="countdown-element"> come back in:</p>
+  <p id="days" class="countdown-element"></p>
+  <p id="hours" class="countdown-element"></p>
+  <p id="minutes" class="countdown-element"></p>
+  <p id="seconds" class="countdown-element"></p>
+</div>
+
+
+<!-- NAVIGATION --> 
+
+<div>
+    <h1 class="return-home"><a href="home.html">return home ▶</a></h1>     
+</div>
+
+
+<!-- FLASHLIGHT FUNCTIONS -->
+    <div id="overlay"></div>
+    <div>
+        <img id="followFlashlight" src="images/flashlight_2.1.png" style="position: absolute;">
+    </div>
+
+    <script src="javascript/flashlight.js"></script>
+    <script src="javascript/toggle_flashlight.js"></script> 
+
+    <div class="black-rectangle"></div> <!-- fade in animation -->
+
+    <h2 id="toggleLightsText" >toggle lights: press 🆃</h2> <!-- toggle lights label -->
+
+
+</body>
+</html>

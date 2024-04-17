@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    /*height: 100vh;
+    width: 100vw;*/
+    overflow-x: hidden;     
+    background-color: #f0f0f0;
+
+  }
+  .black-rectangle {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      animation: fade 7s forwards; /* Applying the fade animation */
+      animation-delay: 1s;
+      pointer-events: none;
+      z-index: 2;
+      }
+ 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+  padding: 10vw;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f0f0;
+   
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vw;
+  padding: 3vw;
+}
+.overlay-centered {
+text-align: center;
+text-decoration: #000000;
+opacity: 25%;
+position: absolute;
+top: 0vh;
+left: 50vw;
+transform: translate(-50%);
+z-index: +1;
+line-height: 1.2em;
+max-width: 30vw;
+margin-top: 2vh;
+
+}
+
+.grid-item {
+  margin: 5vh 0;
+  text-align: left;
+  
+  
+}
+
+.grid-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Staggering rows */
+.grid-item:nth-child(3n+1) {
+  grid-row: span 1;
+}
+
+.grid-item:nth-child(3n+2) {
+  grid-row: span 1;
+  margin-top: -6vh; /* Offset the staggered row */
+}
+</style>
+
+<!-- LOAD PJ.5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script src="javascript/p5.min.js"></script>
+
+</head>
+<body>
+
+
+
+<!-- AUDIO -->
+    <audio loop autoplay><source src="audio/windchimes_02.mp3" type="audio/mpeg"></audio>
+    <audio id="torchSound" src="audio/torch_switch_01.mp3" preload="auto"></audio>
+
+<!-- FLASHLIGHT FUNCTIONS -->
+    <div id="overlay"></div>  
+    <div>
+        <img id="followFlashlight" src="images/flashlight_2.1.png" style="position: absolute; ">
+    </div>
+
+    <script src="javascript/flashlight.js"></script>
+    <script src="javascript/toggle_flashlight.js"></script> 
+
+    <div class="black-rectangle" style="z-index: 100;"></div> <!-- fade in animation -->
+
+      <h2 id="toggleLightsText" >toggle lights: press 🆃</h2> <!-- toggle lights label -->
+       
+
+<!-- NAVIGATION -->    
+<div>
+  <h2 id="returnHomeBottomRight"><a href="home.html">return home ▶</a></h2>     
+</div>
+
+<!-- PAGE CONTENTS -->
+
+<div class="grid-container">
+  <div class="grid-item"><h1>some things i have seen and done along the way.</h1> </div>
+  <div class="grid-item"><img src="images/diary entry (0).jpg" alt="Image 1"></div>
+  <div class="grid-item"><img src="images/yoko_ono.gif" alt="Image 1" style="width: 400px;"><caption style=><p>yoko ono, my mommy is beautiful, NGV, 2023</p></caption></div>
+  <div class="grid-item"><img src="images/marshmallow_laser_feast_1.gif" alt="Image 1" style="width: 400px;"><caption><p></p>marshmallow laser feat, works of nature, ACMI, 2023</p></caption></div>
+  <div class="grid-item"><img src="images/drawing_1.JPG" alt="Image 1" style="width: 400px;"><caption><p></p>life drawing</p></caption></div>
+  <div class="grid-item"><img src="images/drawing_ (1).jpg" alt="Image 1" style="width: 400px;"><caption><p>ink painting</p></caption></div>
+
+</div>
+
+<div class="grid-container">
+  <div class="grid-item"><img src="images/early_idea_1.jpg" alt="Image 1"><caption><p>activity - concept for a to-do list for musicians</p></caption></div>
+  <div class="grid-item"><img src="images/early_idea_2.png" alt="Image 2"></div>
+  <div class="grid-item"><img src="images/early_idea_3.jpg" alt="Image 3"></div>
+  <div class="grid-item"><h1>i started sketching what i thought i wanted my site to look like</h1> </div>
+  <div class="grid-item"><img src="images/paper_prototype (1).jpg" alt="Image 3"></div>
+  </div>
+  
+  <div class="grid-container">
+  <div class="grid-item"><h1>what gave me this idea of the flashlight was the quick sketches, it was a throwaway idea at the time</h1></div>
+  <div class="grid-item"><img src="images/quick_sketch_activity.jpeg" alt="Image 3"><caption><p>flashlight in bottom right sketch</p></caption></div>
+  <div class="grid-item"><img src="images/notes.jpg" alt="Image 2"><p>notes and ideas how to execute my vision</p></div>
+  <div class="grid-item"><a href="https://2022.ccncn.eu/"><img src="images/ccncn.gif" alt="Image 1" style="width: 400px;"></a><caption><p>a site that i liked the organisation of</p></caption></div>
+  <div class="grid-item"><a href="https://kimalbrecht.com/vis/"><img src="images/inspo_1.gif" alt="Image 1" style="width: 400px;"></a><caption><p>i liked the organisation of this site. the feeling of discovering something...</p></caption></div>
+  <div class="grid-item"><a href="jodi.org"><img src="images/jodi.org.gif" alt="Image 1" style="width: 400px;"></a><caption><p>the random features of this page isn't something i have yet, but i want it</p></caption></div>
+  <div class="grid-item"><a href="https://abcdinamo.com/"><img src="images/dinamo.gif" alt="Image 1" style="width: 400px;"></a><caption><p>i like the personal items that are scattered around</p></caption></div>
+  <div class="grid-item"><a href="https://visdeurbel.nl/en/the-fish-doorbell/"><img src="images/fish_doorbell.gif" alt="Image 1" style="width: 400px;"></a><caption><p>fish doorbell, a system where viewers watch a livestream and ring the doorbell to let fish through a closed gate.</p></caption></div>
+ </div>
+
+ <div class="grid-container">
+   <div class="grid-item"><img src="images/paper_prototype_hole.png" alt="Image 3"><caption><p>'flashlight' cursor</p></caption></div>
+  <div class="grid-item"><img src="images/paper_prototype (2).jpg" alt="Image 3"><caption><p>home page</p></caption></div>
+  <div class="grid-item"><img src="images/paper_prototype (3).jpg" alt="Image 3"><caption><p>content page</p></caption></div>
+  <div class="grid-item"><h1>i cut a hole in a page, used it as a paper 'flashlight' and now look where we are!</h1></div>
+  </div>
+  
+<div class="grid-container">
+   <div class="grid-item"><h1>along the way, i found out that chatgpt is my best friend, sometimes it gave me bad code, and other times it surprised me</h1></div>
+     <div class="grid-item"><img src="images/website 1.jpg" alt="Image 3"></div>
+     <div class="grid-item"><img src="images/live_server.jpg" alt="Image 3"></div>
+</div>
+
+<div class="grid-container">
+  <div class="grid-item" style="font-style: italic;">
+    <h3><p>code in html and css a website with title "INTERACTIVE MEDIA GDES30008 2024"</p>
+    <p>do i need any extra code if im starting my CSS from scratch?</p>
+    <p>write css code for custom cursor where i can add an image as the cursor</p></h3></div>
+  <div class="grid-item"><img src="images/website 2.jpg" alt="Image 3"></div>
+  <div class="grid-item"><img src="images/website 3.jpg" alt="Image 3"></div>
+</div>
+
+<div class="grid-container">
+  <div class="grid-item"><h1>it took me a long time to perfect the cursor, chatgpt wouldn't code it exactly right so i tweaked it alot</h1></div>
+  <div class="grid-item"><img src="images/website 4.jpg" alt="Image 3"></div>
+ 
+  <div class="grid-item" style="font-style: italic;">
+    <h3><p>write java script for an image attached to mouse position</p>
+      <p>make mouse position centred in the image</p>
+      <p>why are my pixel values resetting when the cursor exits the viewport</p>
+            </h3></div>
+              <div class="grid-item" style="font-style: italic;">
+    <h3>
+              <p>when my viewport moves into overflow y, the position of the image in relation to the mouse changes. is there a way to code so that the mouse remained pinned to the same position of the image, even if the page scrolls? i also have the following CSS attached</p>
+          <p>this code now updates the position of the image after you scroll, but the image is not updated to cursor location while the scrolling gesture is occurring. ensure that the image location updates whilst the user is scrolling to ensure the transition is smooth</p>
+    </h3></div>
+    <div class="grid-item"><img src="images/tram_seat.JPG" alt="Image 1"><caption>:(</caption></div>
+    <div class="grid-item"><h1>i don't know how to animate, but i know what i want to animate</h1></div>
+    <div class="grid-item" style="font-style: italic;">
+      <h3>
+        <p>make an animation for an image stays centre of screen for 1 second, then gets larger by 500% over the span of 2.5 seconds, then disappears after that</p>
+        <p>add animation for full screen black from 100% opacity to 0%</p>
+        <p>code for full screen black rectangle</p>
+        <p>how to make something fade to 0% opacity</p>
+        <p>fix my code so that .black-rectangle has the animation mentioned in the @keyframes finction</p>
+        <p>write css for an animation that makes text blurry until it is hovered over</p>
+        <p>please modify this CSS so that the text 'beginning, middle, end' are blurry until they are hovered over</p>
+        <p>ok nice, at the minute the transition between blurred and unblurred is sudden, make it gradual</p>
+        <p>ok great, currently, my hyperlinks are default style, could you remove the look of the hyperlink, and make text turn red once it's hovered over</p>
+
+      </h3></div>
+    <div class="grid-item"><img src="images/gif.gif" alt="Image 1"></div>
+</div>
+
+ 
+  <div class="grid-container">
+    <div class="grid-item" style="font-style: italic;">
+      <h3>
+  <p>how to make text clickable</p>
+  <p>how to increase text size</p>
+  <p>change position of text html</p>
+  <p>how to spell beginning</p>
+  <p>how to create multi page website css</p>
+  <p>how do i make the text "beginning" a hyperlink to my other page titled beginning.html</p>
+  <p>how to make an image so i can click a hyperlink underneath it</p>
+    <p>my code has an image that follows the cursor around, but because of this, there is a barrier between my mouse and any clickable elements on screen. what can i do so that 'flashlight_2.1' lets me click things behind it</p>
+     </h3></div> 
+     <div class="grid-item"><img src="images/email_0.jpg" alt="Image 1"><caption><p>an email draft. just as i checked my site one last time, my code magically worked, and so i didn't send the email</p></caption></div>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item"><img src="images/email_1.jpg" alt="Image 1"></div>
+    <div class="grid-item"><img src="images/email_2.jpg" alt="Image 2"></div>
+  </div>
+  <div class="grid-container">
+    <div class="grid-item" ><h1>i tried my best to make it an option to 'turn the lights on,' but it just wouldn't work</h1></div>
+  <div class="grid-item" style="font-style: italic;">
+    <h3><p>make an image disapear when i click the word "turn the lights on"</p>
+      <p>how to disable a chunk of java script by clicking text that says ' lights on '</p>
+      <p>this is the code i want to turn off, how do i link it?</p>
+  </h3></div>
+  </div>
+  
+  <div class="grid-container">
+    <div class="grid-item"><h1>i decided to lean into the dark and scary side of my website, the web game 'a dark room,' inspired my choice of sound, and tone of voice.</h1></div>
+    <div class="grid-item"><a href="https://adarkroom.doublespeakgames.com/"><img src="images/a_dark_room.gif" alt="Image 1"></a></div>
+    <div class="grid-item"><a href="https://freesound.org/people/Philip_Goddard/packs/10521/"><img src="images/free_sound.gif" alt="Image 1"></a><caption><p>the search for something unsettling, i found windchimes, lots of them. this sound proceeded to drive me crazy as i was testing my website.</p></caption></div>
+    <div class="grid-item" style="font-style: italic;">
+      <h3>
+        <p>audio html code</p>
+        <p>why wont my audio play</p>
+        <p>how to change how far into my audio it starts playing like +5 seconds</p>
+      </h3></div>
+      <div class="grid-item">><img src="images/hozier tickets.JPG" alt="Image 1"><caption><p>born to see hozier, forced to sit in the ticketek queue @ uni</p></caption></div> 
+      <div class="grid-item"><img src="images/diary entry (3.1).jpg" alt="Image 1"></div>
+  </div>
+ 
+  <div class="grid-container">
+    <div class="grid-item"><h1>the next challenge was the grid. it was hard to build and felt static. offset rows ended up being the solution</h1></div>
+    <div class="grid-item"><img src="images/gif2.gif" alt="Image 1"></div>
+    <div class="grid-item"><img src="images/gif 4.gif" alt="Image 1"></div>
+    <div class="grid-item" style="font-style: italic;">
+      <h3>
+        <p>write in html a grid system for text and image</p>
+        <p>how do i limit the maximum size of my page</p>
+        <p>can i hide the scroll bar while retaincing scrolling abilities?</p>
+        <p>make my grid so that it always fits to the vw, items are allowed to stack if needed it less or more columns</p>
+        
+      </h3></div>
+
+    <div class="grid-item"><img src="images/gif3.gif" alt="Image 1"></div>
+    <div class="grid-item"><img src="images/gif.gif" alt="Image 1"></div>
+    </div>
+
+</body>
+</html>
