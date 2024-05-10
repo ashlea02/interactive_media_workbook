@@ -8,7 +8,7 @@
 <style>
   body{
     overflow: hidden;
-    background-color: black;
+    background-color: white;
      }
   html, body {
   margin: 0;
@@ -29,14 +29,85 @@
 <audio loop autoplay>
   <source id="windchimes" src="audio/windchimes_02.mp3" type="audio/mpeg"> </audio>
 
-<!-- button directs user to index.html, allowing sound because the user has interacted  with the site -->
-  <a href="home.html"><button id="allowSound"><h1>allow sound</h1></button></a>
+<!-- button directs user to index.html, allowing sound because the user has interacted  with the site 
+  <a href="home.html"><button id="allowSound"><h1>allow sound</h1></button></a> -->
+
+  <!-- FLASHLIGHT FUNCTIONS -->
+ <div id="overlay"></div>
+ <div>
+     <img id="followFlashlight" src="images/flashlight_2.1.png" style="position: absolute;">
+ </div>
+
   
-  <script> 
+ <script src="javascript/flashlight.js"></script>
+ <script src="javascript/toggle_flashlight.js"></script>
+
+ <div class="black-rectangle"></div>   <!-- fade in animation -->
+  
+ <!-- <script> 
   //button disappears when clicked
   document.getElementById('allowSound').addEventListener('click', function() {
     this.style.display = 'none';
 });
+</script> -->
+
+<script>
+  //RANDOM POSITION + MOVEMENT OF TEXT --> 
+//SCRIPT BY IBERDDUGO https://editor.p5js.org/lberdugo/sketches/ldAjJb4ns + MODIFIED USING COPILOT   
+
+var allowSoundElem;
+  
+  function setup() {
+    createCanvas(windowWidth, windowHeight);
+  
+    allowSoundElem = createA('home.html', 'allow&nbspsound');
+    allowSoundElem.class('beginning');
+  
+
+
+    // Randomize initial positions
+    x = random(width);
+    y = random(height);
+   
+  
+   // Randomize initial steps 
+  xStep = random(.2, .7);
+  yStep = random(.2, .7);
+  }
+  
+  function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+  }
+  
+  function draw() {
+  background("#ffffff")
+  
+  var allowSoundWidth = textWidth("allow&nbspsound");
+
+
+  var allowSoundHeight = allowSoundElem.elt.offsetHeight;
+
+
+  allowSoundElem.position(x, y);
+
+  x += xStep;
+  y += yStep;
+ 
+  
+
+
+  // bounce along the width
+  if (x > width - allowSoundWidth || x < 0) {
+    xStep = xStep * -1;
+  }
+  
+  // bounce along the height
+  if (y > height - allowSoundHeight || y < 0) {
+    yStep = yStep * -1;
+  }
+}
+ 
+
 </script>
 
 
