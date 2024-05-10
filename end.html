@@ -1,3 +1,8 @@
+<!-- THIS PROJECT HAS REILED HEAVILY ON COPILOT. IT HAS ANTICIPATED MY CODE, AND I HAVE USED THE AUTO-FILL FEATURES OFTEN,
+I HAVE ALSO COPIED LOTS OF CODE FROM IT (MY CSS FOR EXAMPLE), BUT I HAVE OFTEN ASKED IT TO EXPLAIN CODE TO ME. WHILE 
+I HAVE USED MUCH OF ITS CODE, I HAVE ALSO TWEAKED IT TO SUIT MY NEEDS - I HAVE LEARNT WHICH VARIABLES CONTROL WHAT. 
+IT HAS BEEN A LEARNING TOOL IN THIS WAY AS I HAVE LEARNT THE LANGUAGE, AND WHAT TO ASK FOR TO GET THE RESULTS I WANT.
+IT HAS ALSO OFFERED ME IDEAS WHY MY CODE MAY NOT WORK AT TIMES. ALL COPY HAS BEEN WRITTEN BY MYSELF ONLY -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +11,171 @@
     <title>end</title>
     <link rel="stylesheet" href="style.css">
     <style>
-      body{
-          overflow: hidden;
+        body {
+            font-family: 'Arial', sans-serif;
+            box-sizing: border-box;
+            height: 100vh;
+            width: 100vw;
+            background-color: #f0f0f0; 
+            overflow-x: hidden;
+            padding-left: 3vw;
+            padding-right: 3vw;
+            padding-bottom: 3vw;
+            padding-top: 3vw;
         }
+
+        /* TEXT */
+        h1 {
+          font-size: calc(20px + 2vw);
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 25px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            h1 {
+                font-size: 40px;
+            }
+        }
+                      
+                .caption {
+            font-size: calc(10px + 2vw);
+        }
+
+        @media (max-width: 600px) {
+            .caption {
+                font-size: 12px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .caption{
+                font-size: 24px;
+            }
+        }
+       
+       #followFlashlight {
+            transition: opacity 1s;
+        }
+      
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;   
+            background: transparent;
+        }
+      
+        .grid-item {
+           transition: transform 2s;  /* cubic-bezier(1, 1, 1, 1) box-shadow 0.5s; */
+           /* transition-delay: .1s; 
+            background: transparent; */
+            text-shadow: #f0f0f0;
+            padding: 1vw;
+        }
+      
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            background: transparent;
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, .75);
+            transition: transform 2s ease-in-out, box-shadow 0.5s ease-out;
+        }
+      
+        .double-column {
+            grid-column: span 2;
+        }
+          
+      
+
+        .grid-item img:hover {
+            box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, .75);
+            transform: scale(1.06);
+            
+        }
+
+        
+        .grid-item a img:hover {
+            box-shadow: 5px 5px 40px 0px rgba(0, 0, 255, 0.75);
+            
+            transform: scale(1.06);
+            
+        }
+
+
+        .grid-item .caption:hover {
+            transform: none;
+            color: inherit;
+            background-color: inherit;
+            box-shadow: none;
+        }
+
+       .scroll {
+            overflow: auto;
+            height: 500px;
+        }
+
+        #paddedTop {
+            margin-top: 15vh;
+        }
+      
+            
+        /* Staggering rows */
+        .grid-item:nth-child(5n+1) {
+        grid-row: span 1;
+        margin-top: 18vh;
+        }
+
+        .grid-item:nth-child(3n+2) {
+        grid-row: span 1;
+        margin-top: 24vh; /* Offset the staggered row */
+        }
+
+        .iframe-wrapper {
+            position: relative;
+        }
+        
+        .iframe-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            grid-column: span 1;
+        }
+
+        .no-hover,
+        .scroll:hover {
+            transform: none;
+        }
+    
+        .grid-item.no-hover h1 a {
+        text-decoration: underline;
+        }
+
+        .grid-item .scroll img:hover {
+    transform: none;
+}
+     
+        /* POPUP FEATURE BY MATILDA SUTHERLAND, MODIFIED WITH COPILOT */
+        .popUp {
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        position: fixed;
+        z-index: 100;
+        top: 50%;
+        left: 50%;  
+        width: 90vw;
+        height: 90vh;    
+        object-fit: contain;
+        
+      }      
+
+
+      .hidden {
+        display: none;
+      }
 
   </style>
 </head>
@@ -23,11 +190,9 @@
 <!-- LOAD PJ.5 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
-<!-- COUNTDOWN SCRIPT -->
+<!-- COUNTDOWN SCRIPT (by copilot)
  <script src="javascript/countdown_code.js"></script>
 
-<!-- RANDOMISED TEXT 
-    <script src="javascript/randomisedTxt_end.js"></script> -->
 
 <div class="centred-text"><h1>you are not yet welcome here</h1></div>
   <div id="countdown" class="countdown-container">
@@ -36,15 +201,14 @@
   <p id="hours" class="countdown-element"></p>
   <p id="minutes" class="countdown-element"></p>
   <p id="seconds" class="countdown-element"></p>
-</div>
+</div> -->
 
 
 <!-- NAVIGATION --> 
 
 <div>
-    <h1 class="return-home"><a href="home.html">return home ▶</a></h1>     
-</div>
-
+    <h2 id="returnHomeBottomRight"><a href="home.html">return home ▶</a></h2>     
+  </div>
 
 <!-- FLASHLIGHT FUNCTIONS -->
     <div id="overlay"></div>
@@ -59,6 +223,550 @@
 
     <h2 id="toggleLightsText" >toggle lights: press 🆃</h2> <!-- toggle lights label -->
 
+<!--GRID CONTENTS-->
 
+    <div class="container">
+
+        <!--CREATOR SPACE INDUCTION + FIRST WORKSHOP-->
+        <div class="grid-item">
+            <h1>★ after weeks of waiting for our telstra creator space class, the day had come.</h1>
+        </div>  
+       
+        <div class="grid-item">
+            <img src="images/C_IMAGES/telstra_induction.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">★ our induction into the telstra creator space, super fun! we drilled holes in wood and metal. (img credit: me)</div>
+          </div>
+     
+      <div class="grid-item">
+        <img src="images/C_IMAGES/ash_unpacking_arduino_2.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">★ unpacking the arduino kit. (img credit: me)</div>
+        <img src="images/C_IMAGES/ash_unpacking_arduino.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">★ labelling each component. (img credit: me)</div>
+    </div>
+
+
+    <!--BUTTON CONTROLLED LED ARDUINO DIAGRAM-->
+      <div class="grid-item">
+        <img src="images/C_IMAGES/button_operated_LED.gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">Ω button-controlled LED arduino diagram. (img credit: me, using tinkercad)</div>
+      </div>
+
+     
+      <div class="grid-item">
+        <h1>Ω our first arduino build was fun but quite difficult. i didn't completely understand the concept of negative, positive and ground - and i still don't. </h1>
+    </div>  
+
+    <div class="grid-item">
+        <img src="images/C_IMAGES/ashlea_LED_button_2.gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">Ω button-controlled LED arduino build. (img credit: me)</div>
+      </div>
+
+ <!--ULTRASONIC TEST--> 
+
+ <div class="grid-item">
+    <h1>🕪 our second build - this buzzer was extremely loud. this was the second build we did, and i continued to struggle relaying the diagram to our real-life arduino and bread board</h1>
+</div>  
+
+ <div class="grid-item">
+    <img src="images/C_IMAGES/ultrasonic_buzzer_build.png" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🕪 ultrasonic buzzer diagram (img credit: me, from karen ann donachie's tinkercad) </div>
+  </div> 
+
+  <div class="grid-item">
+    <img src="images/C_IMAGES/ash_sound_experiment.gif" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🕪 ultrasonic buzzer build, i was pretty happy with it especially since i was so new to arduino (image:credit) </div>
+  </div>
+     
+
+         <!--NUT PICKING--> 
+
+ <div class="grid-item">
+    <img src="images/C_IMAGES/nut_picking.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🐿 harvesting hazelnuts (img credit: me)</div>
+  </div>
+
+  <div class="grid-item">
+    <img src="images/C_IMAGES/nut_picking_2.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🐿 harvesting hazelnuts (img credit: me)</div>
+  </div>
+
+  <div class="grid-item">
+    <img src="images/C_IMAGES/nut_picking_3.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🐿 harvesting hazelnuts (img credit: me)</div>
+  </div>
+
+
+      <!--LED MATRIX-->    
+      <div class="grid-item">
+        <h1>𖣯 the LED matrix was by far the most difficult arduino build. the resistors kept touching and interrupting the circuit, additionally some of the pins were dodgy. in turn it, made some rows in the matrix stop working. to fix this, we had to poke the resistors until all rows were working.</h1>
+    </div>  
+
+
+      <div class="grid-item">
+        <img src="images/C_IMAGES/cat_LED matrix_6.JPG" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">𖣯 LED matrix arduino build with diagram. (img credit: cat hill)</div>
+      </div>
+
+      <div class="grid-item">
+    </div> 
+
+      <div class="grid-item">
+        <img src="images/C_IMAGES/cat_LED_matrix_2.gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">𖣯 working LED matrix, with custom looping animation. (img credit: cat hill)</div>
+      </div>  
+
+    <!--LED MATRIX CODE - inserted with help of copilot-->
+      <div class="grid-item double-column">
+        <div class="scroll" style="background-color: chartreuse;">
+        <pre>
+            <code>
+                int latchPin = 12; // Pin connected to ST_CP of 74HC595（Pin12）
+                int clockPin = 13; // Pin connected to SH_CP of 74HC595（Pin11）
+                int dataPin = 11; // Pin connected to DS of 74HC595（Pin14）
+                int LEDPin[] = {2, 3, 4, 5, 6, 7, 8, 9}; // column pin (cathode) of LED Matrix
+                // Define the pattern data for a smiling face
+                const int smilingFace[] = {
+                0x1C, 0x22, 0x51, 0x45, 0x45, 0x51, 0x22, 0x1C
+                };
+                // Define the data of numbers and letters, and save them in flash area
+                const int data[] PROGMEM = {
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40, // "wave"
+                0x80, 0x84, 0xa4, 0x20, 0x21, 0x5, 0x44, 0x40 // "wave"
+                // 0x00, 0x00, 0x21, 0x7F, 0x01, 0x00, 0x00, 0x00, // "1"
+                // 0x00, 0x00, 0x23, 0x45, 0x49, 0x31, 0x00, 0x00, // "2"
+                // 0x00, 0x00, 0x22, 0x49, 0x49, 0x36, 0x00, 0x00, // "3"
+                // 0x00, 0x00, 0x0E, 0x32, 0x7F, 0x02, 0x00, 0x00, // "4"
+                // 0x00, 0x00, 0x79, 0x49, 0x49, 0x46, 0x00, 0x00, // "5"
+                // 0x00, 0x00, 0x3E, 0x49, 0x49, 0x26, 0x00, 0x00, // "6"
+                // 0x00, 0x00, 0x60, 0x47, 0x48, 0x70, 0x00, 0x00, // "7"
+                // 0x00, 0x00, 0x36, 0x49, 0x49, 0x36, 0x00, 0x00, // "8"
+                // 0x00, 0x00, 0x32, 0x49, 0x49, 0x3E, 0x00, 0x00, // "9"
+                // 0x00, 0x00, 0x3E, 0x41, 0x41, 0x3E, 0x00, 0x00, // "0"
+                // 0x00, 0x00, 0x3F, 0x44, 0x44, 0x3F, 0x00, 0x00, // "A"
+                // 0x00, 0x00, 0x7F, 0x49, 0x49, 0x36, 0x00, 0x00, // "B"
+                // 0x00, 0x00, 0x3E, 0x41, 0x41, 0x22, 0x00, 0x00, // "C"
+                // 0x00, 0x00, 0x7F, 0x41, 0x41, 0x3E, 0x00, 0x00, // "D"
+                //0x00, 0x00, 0x7F, 0x49, 0x49, 0x41, 0x00, 0x00, // "E"
+                //0x00, 0x00, 0x7F, 0x48, 0x48, 0x40, 0x00, 0x00 // "F"
+                };
+                void setup() {
+                // set pins to output
+                pinMode(latchPin, OUTPUT);
+                pinMode(clockPin, OUTPUT);
+                pinMode(dataPin, OUTPUT);
+                for (int i = 0; i < 8; i++) {
+                pinMode(LEDPin[i], OUTPUT);
+                }
+                
+                }
+                void loop() {
+                // Define a one-byte variable (8 bits) which is used to represent the selected state of 8 columns.
+                int cols;
+                // Display the dynamic patterns of numbers and letters
+                for (int i = 0; i < 128; i++) { // "space，0-9，A-F"16 letters ,each letter hold 8 columns, total 136 columns. Firstly, display space ,then we need shift 128 times（136-8）
+                for (int k = 0; k < 10; k++) { // repeat image of each frame 10 times.
+                cols = 0x01; // Assign binary 00000001. Means the first column is selected.
+                for (int j = i; j < 8 + i; j++) { // display image of each frame
+                matrixColsVal(cols); // select this column
+                matrixRowsVal(pgm_read_word_near(data + j));// display the data in this column
+                delay(1); // display them for a period of time
+                matrixRowsVal(0x00); // close the data of this column
+                cols <<= 1; // shift "cols" 1 bit left to select the next column
+                }
+                }
+                }
+                }
+                void matrixRowsVal(int value) {
+                // make latchPin output low level
+                digitalWrite(latchPin, LOW);
+                // Send serial data to 74HC595
+                shiftOut(dataPin, clockPin, LSBFIRST, value);
+                // make latchPin output high level, then 74HC595 will update the data to parallel output
+                digitalWrite(latchPin, HIGH);
+                }
+                
+                void matrixColsVal(byte value) {
+                byte cols = 0x01;
+                // Output the column data to the corresponding port.
+                for (int i = 0; i < 8; i++) {
+                digitalWrite(LEDPin[i], ((value & cols) == cols) ? LOW : HIGH);
+                cols <<= 1;
+                }
+                }
+                
+            </code>
+        </pre>
+       
+    </div>
+    <div class="caption">𖣯 code that we customised to show our LED matrix pattern.</div>
+    </div>
+
+   
+
+<!--SCIENCE GALLERY VISIT-->
+
+
+      <div class="grid-item">
+        <h1>👁 after weeks of not going to the science gallery, i finally went to 'not natural,' since it was our last week in the telstra creator space. after 3 weeks of learning arduino, it was fun to try and decode how each artwork was constructed.</h1>
+
+        <img src="images/C_IMAGES/ash_(2).gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">👁 'spambots' at 'not natural', science gallery melbourne, 2024. (img credit: me)</div>
+      </div>
+
+      <div class="grid-item">
+        <img src="images/C_IMAGES/ash_science_gallery_not_natural.gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">👁 'plant machete' at 'not natural', science gallery melbourne, 2024. this was my favourite piece from this exhibition - it was actually quite intimidating. (img credit: me)</div>
+      </div>
+
+      <div class="grid-item">
+        <img src="images/C_IMAGES/ash_(16).gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">👁 'kentucky perfect' at 'not natural', science gallery melbourne, 2024. (img credit: me)</div>
+      </div>
+
+ 
+
+
+
+  <!--TOUCH ACTIVATED CIRCUIT--> 
+      <div class="grid-item">
+        <h1>☛ we built a touch activated circuit, where the human touch completes the circuit. we had to add in a different resistor to make the LED more sensitive to a change in voltage.</h1>
+    </div>  
+
+      <div class="grid-item double-column">
+        <img src="images/C_IMAGES/touch_activated_LED_build.png" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">☛ touch-activated LED diagram. (img credit: fritzing)</div>
+      </div>
+
+      <div class="grid-item double-column">
+        <div class="scroll" style="background-color: chartreuse;">
+        <pre>
+            <code>
+                /*
+                Arduino Starter Kit example
+                Project 13 - Touch Sensor Lamp
+                This sketch is written to accompany Project 13 in the Arduino Starter Kit
+                Parts required:
+                - 1 megohm resistor
+                - metal foil or copper mesh
+                - 220 ohm resistor (* for RED LED — will need to be different if using a different coloured LED)
+                - LED
+                Software required :
+                - CapacitiveSensor library by Paul Badger
+                  http://www.arduino.cc/playground/Main/CapacitiveSensor
+                created 18 Sep 2012
+                by Scott Fitzgerald
+                http://www.arduino.cc/starterKit
+                This example code is part of the public domain.
+              */
+              // import the library (must be located in the Arduino/libraries directory)
+              #include <CapacitiveSensor.h>
+              
+              
+              // create an instance of the library
+              // pin 4 sends electrical energy
+              // pin 2 senses senses a change
+              CapacitiveSensor capSensor = CapacitiveSensor(4, 2);
+              
+              
+              // threshold for turning the lamp on
+              int threshold = 1100;
+              // pin the LED is connected to
+              const int ledPin = 12;
+              void setup() {
+              // open a serial connection
+              Serial.begin(9600);
+              // set the LED pin as an output
+              pinMode(ledPin, OUTPUT);
+              }
+              void loop() {
+              // store the value reported by the sensor in a variable
+              long sensorValue = capSensor.capacitiveSensor(30);
+              
+              
+              // print out the sensor value
+              Serial.println(sensorValue);
+              
+              
+              // if the value is greater than the threshold
+              if (sensorValue > 8000) {
+              // turn the LED on
+              digitalWrite(10, HIGH);
+              }
+              
+              else if (sensorValue > 3500) {
+                // turn LED on
+                digitalWrite(12, HIGH);
+              }
+              
+              // if it's lower than the threshold
+              else {
+              // turn the LED off
+              digitalWrite(10, LOW);
+              digitalWrite(12, LOW);
+              }
+              
+              
+              delay(10);
+              }
+                
+            </code>
+        </pre>
+  
+    </div>
+    <div class="caption">☛ code for the touch activated circuit with 3 lights and 3 sensors. we couldn't get is working due to the lack of vol</div>
+</div>
+
+<div class="grid-item">
+</div> 
+<div class="grid-item">
+</div> 
+
+      <div class="grid-item">
+        <img src="images/C_IMAGES/cat_touch_sensor_1.gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">☛ touch-activated LED arduino build. after building the basic circuit, we tried with multiple LEDs. (img credit: cat hill)</div>
+      </div>
+
+      <div class="grid-item">
+        <img src="images/C_IMAGES/cat_touch_sensor_LED_1.gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">☛ we looked at the serial monitor in arduino ide to understand the amount of electricity received through our sensors. we wanted different wires to activate their respective LEDs. however, we found there was not enough electricity to run through the whole circuit. (img credit: cat hill)</div>
+      </div>
+
+  <!--HERE LIVES OUR CULTURE--> 
+  <div class="grid-item">
+    <h1>🕮 after passing it in the library, i finally saw 'here lives our culture' in the ballieu library. it had japenese and chinese artworks and books</h1>
+</div>  
+
+<div class="grid-item double-column">
+    <img src="images/C_IMAGES/here_lives_our_culture_2.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🕮 (img src: <a href="https://library.unimelb.edu.au/asc/whats-on/exhibitions/here-lives-our-culture-introduction/here-lives-our-culture-image-gallery" target="_blank"><u>melbourne uni library</u></a>)</div>
+  </div>
+ <div class="grid-item">
+    <img src="images/C_IMAGES/here_lives_our_culture_1.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🕮 (img src: <a href="https://library.unimelb.edu.au/asc/whats-on/exhibitions/here-lives-our-culture-introduction/here-lives-our-culture-image-gallery" target="_blank"><u>melbourne uni library</u></a>)</div>
+  </div>
+
+
+
+  <div class="grid-item double-column">
+    <img src="images/C_IMAGES/here_lives_our_culture_3.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🕮 (img src: <a href="https://library.unimelb.edu.au/asc/whats-on/exhibitions/here-lives-our-culture-introduction/here-lives-our-culture-image-gallery" target="_blank"><u>melbourne uni library</u></a>)</div>
+  </div>
+
+  <!--ACCA VISIT-->
+
+  <div class="grid-item double-column ">
+    <img src="images/C_IMAGES/acca_3.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">☕︎ title wall (img credit: me)</div>
+  </div>
+
+  <div class="grid-item">
+    <h1>☕︎ i went to see laure prouvost's 'oui move in you,' at acca. the work spoke alot about childhood, womanhood, motherhood, memories, objects, architecture, life and relationships. the exhibition opens with a short film detailing the disapearrance of her artist grandfather and his wife and house full of belongings he left behind, setting the tone for the rest of the exhibition </h1>
+</div>  
+
+  
+
+  <div class="grid-item  ">
+    <img src="images/C_IMAGES/acca_2.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">☕︎ (img credit: me)</div>
+  </div>
+
+  <div class="grid-item double-column ">
+    <img src="images/C_IMAGES/acca_1.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">☕︎ this room was filled with trinkets made of sticks, leaves, plastics, broken cords, sespended with fishing line. (img credit: me)</div>
+  </div>
+
+
+
+
+
+
+ 
+
+
+
+
+
+      <!--talking about VOILENCE AGAINST WOMEN-->
+      <div class="grid-item">
+        <h1>♥ violence against women is something that's always on my mind whether concsiously or not. in the last month the media has talked alot about it. many murders have taken place recently, with the bondi junction causing the most grief. the days following i think we all felt shocked and on guard. yet, there have been many murders and violent acts since, which is heartbreaking but far from surprising</h1>
+    </div>  
+
+      <div class="grid-item">
+        <a href="https://www.instagram.com/reel/C6a0vDBSnlm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"> <img src="images/C_IMAGES/carry+tommy_show_2.gif" alt="" onclick="toggleHidden(this.src)">
+     <div class="caption">♥ an instagram post i came across. it made me quite emotional and sparked some discussions with my friends. (video credit: carry & tommy show)</div></a>
+     </div>
+
+      <div class="grid-item">
+        <a href="https://youtu.be/bR3YqK3-AiQ" target="_blank"><img src="images/C_IMAGES/voicenote.gif" alt="">
+        <div class="caption">♥ a series of voicenotes I sent to a male friend about how it feels to live as a woman. i talk about how we live differently, women make silent decisions many times a day, every day. because of this, we are used to reading in-between the lines to protect ourselves and other women/ girls. 6:41pm, friday 3 may, 2024. (img credit: me)</div></a>
+        </div>
+
+
+    <div class="grid-item">
+        <img src="images/C_IMAGES/note_book_LED_matrix_sketches_2.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">♥ a diary entry detailing subtle violence i witnessed on the train. (img credit: me)</div>  
+    </div>
+
+      <div class="grid-item">
+        <img src="images/C_IMAGES/text_conversation_.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">♥ a text thread with a female friend talking about the speech from the carry & tommy show. (img credit: me)</div>
+      </div>
+
+      
+      <div class="grid-item">
+<h1>♥ i had felt lost with my final project. this issue has given me the "why" </h1>
+      </div>
+
+       <!--WICKED--> 
+
+ <div class="grid-item">
+    <h1>🎶 i saw 'wicked' at the regent theatre. after being subjected to the music for years by my muscial-obsessed brother, we got to see it. everything about it was amazing. what especially blew me away was the set and costume design</h1>
+</div>  
+
+ 
+ <div class="grid-item">
+    <img src="images/C_IMAGES/wicked_1.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🎶 wicked building fascade (img credit: me) </div>
+  </div>
+  
+  <div class="grid-item">
+    <img src="images/C_IMAGES/wicked_2.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">🎶 wicked set design (img credit: me) </div>
+  </div>
+
+    <div class="grid-item">
+        <img src="images/C_IMAGES/wicked_3.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">🎶 wicked set design (img credit: me)</div>
+        </div>
+
+
+<div class="grid-item double-column">
+            <img src="images/C_IMAGES/wicked_4.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">🎶 lighting inside theatre (img credit: me)</div>
+            </div>
+
+
+      
+       <!--positive covid test--> 
+
+ 
+ <div class="grid-item">
+    <h1>☢ i got covid for the third time (in week 10 of uni :o)</h1>
+</div>  
+
+ <div class="grid-item">
+    <img src="images/C_IMAGES/positive_covid_test.jpg" alt="" onclick="toggleHidden(this.src)">
+    <div class="caption">☢ postive covid test (img credit: me)</div>
+  </div>
+
+  <div class="grid-item">
+   </div>  
+
+       <!--links  
+       abc article on gender-based violence https://www.abc.net.au/news/2024-04-24/eleven-more-women-have-died-violently-compared-to-last-year/103759450
+       gov 2022-23 stats on domestic homocide and abuse  https://www.aihw.gov.au/family-domestic-and-sexual-violence/responses-and-outcomes/domestic-homicide
+       -->
+
+     <!--SYNTHESISING IDEAS FOR VIOLENCE AGAINST-->
+
+
+     <div class="grid-item">
+        <img src="images/C_IMAGES/final_project_calculation.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">➔ as of april 30th this year, 28 woman have died to gender-based voilence in australia. this is 1 woman every 4 days, 6 hours, 53 minutes and 26 seconds (img credit: me)</div>
+      </div>
+
+      <div class="grid-item">
+        <img src="images/C_IMAGES/10_murder_machine_2.jpg" alt="" onclick="toggleHidden(this.src)">
+            <div class="caption">➔ diego zak's 'murder machine' prints out headlines of murder as they are reported in venezuela. (img credit:<a href="https://www.behance.net/gallery/27975357/Murder-Machine?tracking_source=project_owner_other_projects&" target="_blank"><u>diego zaks</u>)</a></div>
+            <div class="caption"></div>
+          </div>
+
+          <div class="grid-item">
+       <h1>➔ since i heard the statistic that a woman is dying every 4 days to gender-based violence, it has not left me. diego zak's murder machine came to mind - it talks about death in units of time. its morbidity is what makes the work so effective</h1>
+          </div>  
+      <div class="grid-item double-column">
+        <img src="images/C_IMAGES/final_projectr_coundown_idea.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">➔ this is my first idea, it's an approximate countdown of when another woman will be murdered. it's deeply disturbing, and uncomfortable to think about - 4 days is such a short amount of time. my aim with this would to cause people to feel the hoplessness that women feel on the issue, hopefully prompting change. (img credit: me)</div>
+      </div>
+
+ 
+
+      <div class="grid-item">
+        <a href="https://www.facebook.com/DestroyTheJoint/" target="_blank"><img src="images/C_IMAGES/destroy_the_joint_1.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">➔a facebook page that counts the women murdered in australia, and memorialises them when their deaths are confirmed as murder, even after years after their death or disappearance.(img credit: me)</div></a>
+      </div>
+<div class="grid-item">
+      <a href="https://australianfemicidewatch.org/database/" target="_blank"><img src="images/C_IMAGES/the_red_heart.gif" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">✤ the RED HEART campaign is cause that tracks the murders of women and children in australia. a user can request a heart be left in memory of a loved one. what is especially heartbreaking about this is the small hearts - they represent children. (img credit: me)</div></a>
+    </div>
+
+     
+    <div class="grid-item">
+        <h1>✤ instead of taking a route of morbidity, i also looked at the idea of memorial. the following examples came to mind.</h1>
+    </div>
+
+    <div class="grid-item">
+        <img src="images/C_IMAGES/australian_war_memorial.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">✤ walking along the australian war memorial is quite special, knowing the amount of people that have placed a poppy in memory of a loved one. (img credit: <a href="https://www.whyyouwander.com/why-it-is-important-to-visit-australian-war-memorial/" target="_blank"><u>why you wander)</u></a></div>
+      </div>
+
+
+     <div class="grid-item">
+       <img src="images/C_IMAGES/yayoi_kusama_obliteration_room.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">✤ as i thought about memorial, layering objects, and permenence, i thought of yayoi kusama's obliteration room. some people choose to find an uncommon spot, others choose to layer their stickers. this same idea could apply. (img credit:  <a href="https://news.artnet.com/art-world-archives/three-things-yayoi-kusama-obliteration-room-2159903" target="_blank"><u>queensland art gallery foundation/QAGOMA photography</u>)</a></div>
+      </div>
+
+  
+
+      <div class="grid-item double-column">
+        <img src="images/C_IMAGES/final_project_flower_memorial.jpg" alt="" onclick="toggleHidden(this.src)">
+        <div class="caption">✤ opposite to my idea of time running out, this idea freezes time. it is a moment to pause, to remember, to grieve, to feel a sense of community. after the bondi junction stabbing, an image that stays with me is the many many flowers out the front of the shopping centre. leaving flowers is both a community and individual activity, it feels like the least we can do when someone has died. for this idea, i would like for the webpage to be infinite, when there is no more room to place your own flower, you can scroll to find an empty space. (img credit: me)</div>
+      </div>
+
+
+  
+
+
+  <!-- POPPED OUT IMG -->
+<!-- CODE BY MATILDA SUTHERLAND https://matildasutho.github.io/InteractiveMedia2024/Week3/index.html, MODIFIED WITH COPILOT -->
+
+
+ <!-- POPPED OUT IMG DYNAMIC DISPLAY -->  <img class="hidden popUp" src="" alt="" onclick="toggleHidden()">
+
+ <script>
+    function toggleHidden(imgSrc) {
+    var element = document.querySelector(".popUp");
+    element.src = imgSrc;
+    if (!element.classList.contains("hidden")) {
+      element.classList.add("hidden");
+    } else {
+      element.classList.toggle("hidden");
+    }
+  }
+ 
+    </script>
+
+
+
+
+
+
+
+  
 </body>
 </html>
