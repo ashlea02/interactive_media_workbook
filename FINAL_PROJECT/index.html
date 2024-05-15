@@ -106,12 +106,16 @@ IT HAS ALSO OFFERED ME IDEAS WHY MY CODE MAY NOT WORK AT TIMES. ALL COPY HAS BEE
     }, 1000);</script> -->
 
     <script>
-// Set the end time (4 days, 6 hours, 53 minutes, 26 seconds from now)
-var endTime = new Date();
-endTime.setSeconds(endTime.getSeconds() + 26);
-endTime.setMinutes(endTime.getMinutes() + 53);
-endTime.setHours(endTime.getHours() + 6);
-endTime.setDate(endTime.getDate() + 4);
+// Get the end time from localStorage or set it to 4 days, 6 hours, 53 minutes, 26 seconds from now
+var endTime = new Date(localStorage.getItem('endTime'));
+if (isNaN(endTime)) {
+  endTime = new Date();
+  endTime.setSeconds(endTime.getSeconds() + 26);
+  endTime.setMinutes(endTime.getMinutes() + 53);
+  endTime.setHours(endTime.getHours() + 6);
+  endTime.setDate(endTime.getDate() + 4);
+  localStorage.setItem('endTime', endTime);
+}
 
 // Update the count down every 1 second
 var countdownInterval = setInterval(function() {
@@ -134,16 +138,18 @@ var countdownInterval = setInterval(function() {
   document.getElementById("minutes").innerHTML = minutes + "m ";
   document.getElementById("seconds").innerHTML = seconds + "s ";
 
-  // If the count down is finished, reset the end time to 4 days, 6 hours, 53 minutes, 26 seconds from now
+  // If the count down is finished, reset the end time to 4 days, 6 hours, 53 minutes, 26 seconds from now and store it in localStorage
   if (distance < 0) {
     endTime = new Date();
     endTime.setSeconds(endTime.getSeconds() + 26);
     endTime.setMinutes(endTime.getMinutes() + 53);
     endTime.setHours(endTime.getHours() + 6);
     endTime.setDate(endTime.getDate() + 4);
+    localStorage.setItem('endTime', endTime);
   }
 }, 1000);
     </script>
+    
     
 
 
