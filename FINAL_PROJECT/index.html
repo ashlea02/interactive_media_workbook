@@ -1,0 +1,170 @@
+<!-- THIS PROJECT HAS REILED HEAVILY ON COPILOT. IT HAS ANTICIPATED MY CODE, AND I HAVE USED THE AUTO-FILL FEATURES OFTEN,
+I HAVE ALSO COPIED LOTS OF CODE FROM IT (MY CSS FOR EXAMPLE), BUT I HAVE OFTEN ASKED IT TO EXPLAIN CODE TO ME. WHILE 
+I HAVE USED MUCH OF ITS CODE, I HAVE ALSO TWEAKED IT TO SUIT MY NEEDS - I HAVE LEARNT WHICH VARIABLES CONTROL WHAT. 
+IT HAS BEEN A LEARNING TOOL IN THIS WAY AS I HAVE LEARNT THE LANGUAGE, AND WHAT TO ASK FOR TO GET THE RESULTS I WANT.
+IT HAS ALSO OFFERED ME IDEAS WHY MY CODE MAY NOT WORK AT TIMES. ALL COPY HAS BEEN WRITTEN BY MYSELF ONLY -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ashlea_banon_final_project</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+          @font-face {
+            font-family: 'DirectorRegular';
+            src: url('Director-Regular.otf') format('opentype');
+        }
+   h1 {
+  font-size: 40px;
+  font-family: 'DirectorRegular', 'Courier';
+  color:blue;
+  text-align: left;
+  margin-left: 10%;
+   }
+
+   body {
+    margin: 10%;
+   }
+
+   p {
+   margin-top: 0;
+   margin-bottom: 0;
+   
+   }
+
+   .left-aligned {
+    text-align: left;
+    
+   }
+
+/* COUNTDOWN TIMER */
+   .countdown-element {
+    font-size: 250px;
+    font-family: 'DirectorRegular', 'Courier';
+    color: blue;
+    text-align: left;
+    text-shadow: 5px 5px 20px white;
+
+   
+   }
+
+   .countdown-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 95%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    text-align: center;
+    z-index: 10
+
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOAD PJ.5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+<!-- COUNTDOWN SCRIPT (by copilot) -->
+
+ <!-- <script>//COUNTDOWN TILL MAY 1 2024 
+    //MODIFIED COPILOT CODE
+    
+    // Set the date we're counting down to
+    var countDownDate = new Date("May 16, 2024 00:00:00").getTime();
+    
+    // Update the count down every 1 second
+    var countdownInterval = setInterval(function() {
+    
+      // Get today's date and time
+      var now = new Date().getTime();
+    
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+    
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+      // Display the result in the element with id="countdown"
+      document.getElementById("days").innerHTML = days + "d ";
+      document.getElementById("hours").innerHTML = hours + "h ";
+      document.getElementById("minutes").innerHTML = minutes + "m ";
+      document.getElementById("seconds").innerHTML = seconds + "s ";
+    
+      // If the count down is finished, write some text 
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown").innerHTML = "another woman lost";
+      }
+    }, 1000);</script> -->
+
+    <script>
+// Set the end time (4 days, 6 hours, 53 minutes, 26 seconds from now)
+var endTime = new Date();
+endTime.setSeconds(endTime.getSeconds() + 26);
+endTime.setMinutes(endTime.getMinutes() + 53);
+endTime.setHours(endTime.getHours() + 6);
+endTime.setDate(endTime.getDate() + 4);
+
+// Update the count down every 1 second
+var countdownInterval = setInterval(function() {
+
+  // Get the current time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the end time
+  var distance = endTime - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="countdown"
+  document.getElementById("days").innerHTML = days + "d ";
+  document.getElementById("hours").innerHTML = hours + "h ";
+  document.getElementById("minutes").innerHTML = minutes + "m ";
+  document.getElementById("seconds").innerHTML = seconds + "s ";
+
+  // If the count down is finished, reset the end time to 4 days, 6 hours, 53 minutes, 26 seconds from now
+  if (distance < 0) {
+    endTime = new Date();
+    endTime.setSeconds(endTime.getSeconds() + 26);
+    endTime.setMinutes(endTime.getMinutes() + 53);
+    endTime.setHours(endTime.getHours() + 6);
+    endTime.setDate(endTime.getDate() + 4);
+  }
+}, 1000);
+    </script>
+    
+
+
+<div class="centred-text"><h1>as of april 30th 2024, 28 woman have died to gendered voilence in australia this year. this is <p>1 woman every:</p> </h1>
+  <h1 class="left-aligned"><p>4 days,</p> <p>6 hours,</p> <p>53 minutes,</p>  <p>26 seconds...</p></h1></div>
+  <div id="countdown" class="countdown-container">
+  <h2 class="countdown-element"></h2>
+  <p id="days" class="countdown-element"></p>
+  <p id="hours" class="countdown-element"></p>
+  <p id="minutes" class="countdown-element"></p>
+  <p id="seconds" class="countdown-element"></p>
+</div> 
+
+
+
+
+
+
+
+
+
+  
+</body>
+</html>
