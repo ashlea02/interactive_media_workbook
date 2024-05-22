@@ -1,8 +1,4 @@
-<!-- THIS PROJECT HAS REILED HEAVILY ON COPILOT. IT HAS ANTICIPATED MY CODE, AND I HAVE USED THE AUTO-FILL FEATURES OFTEN,
-I HAVE ALSO COPIED LOTS OF CODE FROM IT (MY CSS FOR EXAMPLE), BUT I HAVE OFTEN ASKED IT TO EXPLAIN CODE TO ME. WHILE 
-I HAVE USED MUCH OF ITS CODE, I HAVE ALSO TWEAKED IT TO SUIT MY NEEDS - I HAVE LEARNT WHICH VARIABLES CONTROL WHAT. 
-IT HAS BEEN A LEARNING TOOL IN THIS WAY AS I HAVE LEARNT THE LANGUAGE, AND WHAT TO ASK FOR TO GET THE RESULTS I WANT.
-IT HAS ALSO OFFERED ME IDEAS WHY MY CODE MAY NOT WORK AT TIMES. ALL COPY HAS BEEN WRITTEN BY MYSELF ONLY -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,71 +7,113 @@ IT HAS ALSO OFFERED ME IDEAS WHY MY CODE MAY NOT WORK AT TIMES. ALL COPY HAS BEE
     <title>ashlea_banon_final_project</title>
     <link rel="stylesheet" href="style.css">
     <style>
-          @font-face {
-            font-family: 'DirectorRegular';
-            src: url('Director-Regular.otf') format('opentype');
-        }
-   h1 {
-  font-size: 40px;
-  font-family: 'DirectorRegular', 'Courier';
-  color:blue;
-  text-align: left;
-  margin-left: 10%;
-   }
-
-   body {
-    margin: 10%;
-   }
-
-   p {
-   margin-top: 0;
-   margin-bottom: 0;
-   
-   }
-
-   .left-aligned {
-    text-align: left;
     
-   }
+        @font-face {
+            font-family: 'LatReg';
+            src: url('Latitude-Regular.woff2') format('WOFF2'); /* Font is part of the project, 'Degheest' by Ange Degheest, Camille Depalle, Eugénie Bidaut, Luna Delabre, Mandy Elbé, May Jolivet, Oriane Charvieux, Benjamin Gomez, Justine Herbel. Distributed by velvetyne.fr. */
+            
+            
+        }
 
-/* COUNTDOWN TIMER */
-   .countdown-element {
-    font-size: 250px;
-    font-family: 'DirectorRegular', 'Courier';
-    color: blue;
-    text-align: left;
-    text-shadow: 5px 5px 20px white;
+        body {
+            background-color: #f3f1ea;
+            overflow-x: scroll;
+            overflow-x: visible;
+        }
 
-   
-   }
+        h1 { 
+            font-size: 4em;
+            font-family: 'LatReg', 'Georgia';
+            font-weight: bold;
+            line-height: 1.3em;
+            color:rgb(48, 48, 48);
+            text-align: left;
+            letter-spacing: 0.01em;
+        }
 
-   .countdown-container {
-    display: flex;
-    justify-content: space-evenly;
-    width: 95%;
-    transform: translate(-50%, -50%);
-    position: fixed;
-    top: 45%;
-    left: 50%;
+        h2 { 
+            font-size: 9em;
+            font-family: 'LatReg', 'Georgia';
+            font-weight: bold;
+     
+            color:rgb(157, 7, 7);
+            text-align: center;
+            font-variant: all-small-caps;
+            padding: 0%;
+            margin: 0%;
+        }
+
+        p {
+            font-size: 1.5em;
+            font-family: 'LatReg', 'Georgia';
+            text-align: left;
+            line-height: 1.5em;
+            font-weight: normal;
+            color:rgb(48, 48, 48);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 45px;   
+            background: transparent;
+            width: 1500px; /* Set a fixed width */
+            max-width: 90%; /* Ensure the container doesn't become too wide */
+            margin-left: auto; /* Center the container */
+            margin-right: auto;
+        }
+
+        .double-column {
+            grid-column: span 2;
+        }
+
+        .triple-column {
+            grid-column: span 3;
+        }
+
+        /* COUNTDOWN TIMER */
+        .countdown-element {
+            font-size: 250px;
+            font-family: 'LatReg', 'Courier';
+            color: rgb(157, 7, 7);
+            text-align: left;
+            
+
+        
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: space-evenly;
+            width: 95%;
+            
+            text-align: left;
+            z-index: 10
+
+
+            }
+#todaysDate{
+    letter-spacing: -0.02em;
+    font-size: 1.1em;
+    font-family: 'LatReg', 'Georgia';
     text-align: center;
-    z-index: 10
+}
+  
 
-    }
+
   </style>
+
+
+
 </head>
 
-<body>
-
-<!-- LOAD PJ.5 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-
-<!-- COUNTDOWN SCRIPT (by copilot) -->
-
- <!-- <script>//COUNTDOWN TILL MAY 1 2024 
+<!-- countdown script > modified COPILOT code -->
+<script>
+//COUNTDOWN TILL MAY 1 2024 
     //MODIFIED COPILOT CODE
     
-    // Set the date we're counting down to
-    var countDownDate = new Date("May 16, 2024 00:00:00").getTime();
+   //DATE 02
+    var countDownDate = new Date("May 23, 2024 14:53:26").getTime();
     
     // Update the count down every 1 second
     var countdownInterval = setInterval(function() {
@@ -85,86 +123,153 @@ IT HAS ALSO OFFERED ME IDEAS WHY MY CODE MAY NOT WORK AT TIMES. ALL COPY HAS BEE
     
       // Find the distance between now and the count down date
       var distance = countDownDate - now;
+
+     // DATE 03
+     if (distance <= 0) {
+     // Set a new countdown date here
+     countDownDate = new Date("May 27, 2024 22:46:46").getTime();
+     distance = countDownDate - now;
+ }
+
+    // DATE 04
+    if (distance <= 0) {
+     // Set a new countdown date here
+     countDownDate = new Date("June 1, 2024 04:40:09").getTime();
+     distance = countDownDate - now;
+ }
+
+    // DATE 05
+    if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("June 5, 2024 10:33:32").getTime();
+     distance = countDownDate - now;
+ }
+
+ 
+    // DATE 06
+    if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("June 9, 2024 17:26:58").getTime();
+     distance = countDownDate - now;
+ }
+
+
+    // DATE 07
+    if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("June 13, 2024 23:20:21").getTime();
+     distance = countDownDate - now;
+ }
+
+ 
+    // DATE 08
+    if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("June 18, 2024 05:13:47").getTime();
+     distance = countDownDate - now;
+ }
+
+  
+    // DATE 09
+    if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("June 22, 2024 11:07:13").getTime();
+     distance = countDownDate - now;
+ }
+
+     // DATE 10
+     if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("June 26, 2024 18:00:39").getTime();
+     distance = countDownDate - now;
+ }
+
+ 
+     // DATE 11
+     if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("July 1, 2024 24:54:05").getTime();
+     distance = countDownDate - now;
+ }
+
+     // DATE 12
+     if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("July 5, 2024 06:47:31").getTime();
+     distance = countDownDate - now;
+ }
+
+        // AUTOMATICALLY ADD 4 DAYS, 6 HOURS, 53 MINUTES, AND 26 SECONDS TO THE COUNTDOWN DATE (DIDN'T WORK)
+        // // If the countdown is over, add 4 days, 6 hours, 53 minutes, and 26 seconds to the countdown date
+        // if (distance <= 0) {
+        //     var newDate = new Date(countDownDate);
+        //     newDate.setDate(newDate.getDate() + 0);
+        //     newDate.setHours(newDate.getHours() + 0);
+        //     newDate.setMinutes(newDate.getMinutes() + 0);
+        //     newDate.setSeconds(newDate.getSeconds() + 20);
+        //     countDownDate = newDate.getTime();
+        //     distance = countDownDate - now;
+        // }
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+        // Display the result in the element with id="countdown"
+        document.getElementById("days").innerHTML = days + ":";
+        document.getElementById("hours").innerHTML = hours + ":";
+        document.getElementById("minutes").innerHTML = minutes + ":";
+        document.getElementById("seconds").innerHTML = seconds + "";
+    }, 1000);
+
+
+
+
+</script>
+
+
+
+
+<body>
+  
+   
+    <span class="container">
+        <div class="triple-column" id="rec"></div>
+
+        <h2 class="triple-column">†&nbsp&nbsp&nbspHER TIME LE<span style="letter-spacing: .051em;">FT&nbsp&nbsp&nbsp†</h2>
+            <p id="todaysDate" class="triple-column"></p>
+       <div class="triple-column"></div>
+
+<h1 class="double-column">A Man Will Kill a Woman Every 4 Days, 6 Hours, 53 Minutes, and 26 Seconds</h1>
+   
+<p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim."
+        </p>
+
+<div class="countdown-container triple-column">
+    <p id="days" class="countdown-element"></p> 
+    <p id="hours" class="countdown-element"></p>
+    <p id="minutes" class="countdown-element"></p>
+    <p id="seconds" class="countdown-element"></p>
+</div>
+
+
+
+
+</span>
+
+
+
+<!-- TODAY'S DATE (CODE BY COPILOT) -->
+<script>
+   var today = new Date();
+    var date = today.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById("todaysDate").innerHTML = date;   
+ </script>
+ 
     
-      // Time calculations for days, hours, minutes and seconds
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-      // Display the result in the element with id="countdown"
-      document.getElementById("days").innerHTML = days + "d ";
-      document.getElementById("hours").innerHTML = hours + "h ";
-      document.getElementById("minutes").innerHTML = minutes + "m ";
-      document.getElementById("seconds").innerHTML = seconds + "s ";
-    
-      // If the count down is finished, write some text 
-      if (distance < 0) {
-        clearInterval(countdownInterval);
-        document.getElementById("countdown").innerHTML = "another woman lost";
-      }
-    }, 1000);</script> -->
-
-    <script>
-// Get the end time from localStorage or set it to 4 days, 6 hours, 53 minutes, 26 seconds from now
-var endTime = new Date(localStorage.getItem('endTime'));
-if (isNaN(endTime)) {
-  endTime = new Date();
-  endTime.setSeconds(endTime.getSeconds() + 26);
-  endTime.setMinutes(endTime.getMinutes() + 53);
-  endTime.setHours(endTime.getHours() + 6);
-  endTime.setDate(endTime.getDate() + 4);
-  localStorage.setItem('endTime', endTime);
-}
-
-// Update the count down every 1 second
-var countdownInterval = setInterval(function() {
-
-  // Get the current time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the end time
-  var distance = endTime - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="countdown"
-  document.getElementById("days").innerHTML = days + "d ";
-  document.getElementById("hours").innerHTML = hours + "h ";
-  document.getElementById("minutes").innerHTML = minutes + "m ";
-  document.getElementById("seconds").innerHTML = seconds + "s ";
-
-  // If the count down is finished, reset the end time to 4 days, 6 hours, 53 minutes, 26 seconds from now and store it in localStorage
-  if (distance < 0) {
-    endTime = new Date();
-    endTime.setSeconds(endTime.getSeconds() + 26);
-    endTime.setMinutes(endTime.getMinutes() + 53);
-    endTime.setHours(endTime.getHours() + 6);
-    endTime.setDate(endTime.getDate() + 4);
-    localStorage.setItem('endTime', endTime);
-  }
-}, 1000);
-    </script>
-    
-    
-
-
-<div class="centred-text"><h1>as of april 30th 2024, 28 woman have died to gendered voilence in australia this year. this is <p>1 woman every:</p> </h1>
-  <h1 class="left-aligned"><p>4 days,</p> <p>6 hours,</p> <p>53 minutes,</p>  <p>26 seconds...</p></h1></div>
-  <div id="countdown" class="countdown-container">
-  <h2 class="countdown-element"></h2>
-  <p id="days" class="countdown-element"></p>
-  <p id="hours" class="countdown-element"></p>
-  <p id="minutes" class="countdown-element"></p>
-  <p id="seconds" class="countdown-element"></p>
-</div> 
-
-
-
 
 
 
@@ -174,3 +279,39 @@ var countdownInterval = setInterval(function() {
   
 </body>
 </html>
+<!-- // Get the current time as the start time
+var startTime = new Date();
+
+// Calculate the end time as 4 days, 6 hours, 53 minutes, and 26 seconds from the start time
+var endTime = new Date(startTime.getTime());
+endTime.setSeconds(endTime.getSeconds() + 26);
+endTime.setMinutes(endTime.getMinutes() + 53);
+endTime.setHours(endTime.getHours() + 6);
+endTime.setDate(endTime.getDate() + 4);
+
+// Update the count down every 1 second
+var countdownInterval = setInterval(function() {
+    // Get the current time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the end time
+    var distance = endTime - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+    // Display the result in the element with id="countdown"
+    document.getElementById("seconds").innerHTML = days + ":" + hours + ":" + minutes + ":" + seconds;
+
+    // If the count down is finished, reset the end time to 4 days, 6 hours, 53 minutes, and 26 seconds from now
+    if (distance < 0) {
+        endTime = new Date(now.getTime());
+        endTime.setSeconds(endTime.getSeconds() + 26);
+        endTime.setMinutes(endTime.getMinutes() + 53);
+        endTime.setHours(endTime.getHours() + 6);
+        endTime.setDate(endTime.getDate() + 4);
+    }
+}, 1000); -->
