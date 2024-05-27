@@ -4,64 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ashlea_banon_final_project</title>
-    <link rel="stylesheet" href="style.css">
+    <title>† Her Time Left †</title>
+   
     <style>
-    
+
         @font-face {
             font-family: 'LatReg';
             src: url('Latitude-Regular.woff2') format('WOFF2'); /* Font is part of the project, 'Degheest' by Ange Degheest, Camille Depalle, Eugénie Bidaut, Luna Delabre, Mandy Elbé, May Jolivet, Oriane Charvieux, Benjamin Gomez, Justine Herbel. Distributed by velvetyne.fr. */
-            
-            
+
+
         }
 
         body {
             background-color: #f3f1ea;
-            overflow-x: scroll;
-            overflow-x: visible;
+            overflow-x: hidden;
+            
+            /* line-height: 72px; */
+          
         }
 
-        h1 { 
-            font-size: 4em;
+        h1 {
+            font-size: 72px;
             font-family: 'LatReg', 'Georgia';
             font-weight: bold;
-            line-height: 1.3em;
+            /* line-height: 72px; */
             color:rgb(48, 48, 48);
-            text-align: left;
+            text-align: center;
             letter-spacing: 0.01em;
+            padding-top: 0;
+            padding-bottom: 250px;
+            padding-left: 200px;
+            padding-right: 200px;
+         
         }
 
-        h2 { 
+        h1, h2, p, a {
+    line-height: 1.2; /* Adjust this value as needed */
+}
+a {
+    color: rgb(48, 48, 48);
+}
+a:hover {
+    color: rgb(157, 7, 7);
+    text-decoration: none;
+}
+
+.dagger{
+    font-size: 9em;
+    font-family: 'LatReg', 'Georgia';
+    font-weight: bold;
+    font-variant: all-small-caps;
+    color:rgb(157, 7, 7);
+    text-align: justify;
+    padding: 0%;
+    margin: auto;
+    line-height: 3em;
+    display: block;
+    width: 1500px;
+    word-spacing: 1.9em;
+}
+
+
+
+
+
+        h2, #timer-message {
             font-size: 9em;
             font-family: 'LatReg', 'Georgia';
             font-weight: bold;
-     
+
             color:rgb(157, 7, 7);
             text-align: center;
             font-variant: all-small-caps;
             padding: 0%;
             margin: 0%;
+            line-height: 1em;
+            transition: scale 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Adjust as needed */
+        }
+
+        #timer-message:hover {
+            scale: 1.09;
+            text-shadow:2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         p {
-            font-size: 1.5em;
+            font-size: 24px;
             font-family: 'LatReg', 'Georgia';
             text-align: left;
-            line-height: 1.5em;
+            /* line-height: 36px; */
             font-weight: normal;
+            padding-top: 36px;
             color:rgb(48, 48, 48);
         }
 
         .container {
             display: grid;
+            align-items: flex-start;
             grid-template-columns: 1fr 1fr 1fr;
-            grid-template-columns: 45px;   
+            grid-template-columns: 45px;
             background: transparent;
             width: 1500px; /* Set a fixed width */
             max-width: 90%; /* Ensure the container doesn't become too wide */
             margin-left: auto; /* Center the container */
             margin-right: auto;
+            gap: 30px;
         }
+
+        .container > * {
+    align-self: start;
+}
 
         .double-column {
             grid-column: span 2;
@@ -77,16 +128,19 @@
             font-family: 'LatReg', 'Courier';
             color: rgb(157, 7, 7);
             text-align: left;
-            
+            padding-bottom: 0;
+            line-height: 1.5em;
+            margin: 0;
 
-        
+
+
         }
 
         .countdown-container {
             display: flex;
             justify-content: space-evenly;
             width: 95%;
-            
+
             text-align: left;
             z-index: 10
 
@@ -94,11 +148,58 @@
             }
 #todaysDate{
     letter-spacing: -0.02em;
-    font-size: 1.1em;
+    font-size: 24px;
+    padding-top: 5px;
+    padding-bottom: 3px;
     font-family: 'LatReg', 'Georgia';
     text-align: center;
+    border-top: 3px solid rgb(48, 48, 48);
+    border-bottom: 3px solid rgb(48, 48, 48);
 }
-  
+
+#fullscreen-rectangle {
+    position: fixed;
+    top: 0; 
+    left: 0;
+   width: 100vw; /* Full width */
+   height: 100vh; /* Full height */
+    background-color: rgb(157, 7, 7); /* Background color */
+    z-index: 100; /* Display on top */
+    padding: 0;
+    margin: 0;
+    transition: opacity 1s ease-in-out; /* Adjust as needed */
+    opacity: 0;
+    pointer-events: none;
+
+}
+
+#death-message {
+            font-size: 72px;
+            font-family: 'LatReg', 'Georgia';
+            font-weight: bold;
+            color:#f3f1ea;
+            text-align: center;
+            letter-spacing: 0.01em;
+            margin-top: 50;
+            z-index: 120;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Adjust as needed */
+
+}
+
+.header {
+    text-align: center; 
+    border-bottom: 3px solid rgb(48, 48, 48);
+    border-top: 3px solid rgb(48, 48, 48);
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+
 
 
   </style>
@@ -107,109 +208,181 @@
 
 </head>
 
-<!-- countdown script > modified COPILOT code -->
+<!-- countdown script modified COPILOT code -->
 <script>
-//COUNTDOWN TILL MAY 1 2024 
+//COUNTDOWN TILL MAY 1 2024
     //MODIFIED COPILOT CODE
-    
+
+  // Select the countdown container where you want to display the messages
+var countdownContainer = document.querySelector('.countdown-container');  
+
+function showDeathMessage() {
+    // Select the death-message div
+    var deathMessageDiv = document.getElementById('death-message');
+
+     // Make the death-message div visible
+     deathMessageDiv.style.opacity = '1';
+
+    // Set a timeout to hide the death-message div after 10 seconds
+    setTimeout(function() {
+        deathMessageDiv.style.opacity = '0';
+    }, 10000);
+}
+
+function showRectangle() {
+    // Select the death-message div
+    var fullscreenRectangleDiv = document.getElementById('fullscreen-rectangle');
+
+   // Make the fullscreen-rectangle div visible
+   fullscreenRectangleDiv.style.opacity = '1';
+
+    // Set a timeout to hide the death-message div after 10 seconds
+    setTimeout(function() {
+        fullscreenRectangleDiv.style.opacity = '0';
+    }, 10000);
+}
+
    //DATE 02
-    var countDownDate = new Date("May 23, 2024 14:53:26").getTime();
-    
+    var countDownDate = new Date("May 28, 2024 15:30:00").getTime();
+
     // Update the count down every 1 second
     var countdownInterval = setInterval(function() {
-    
+
       // Get today's date and time
       var now = new Date().getTime();
-    
+
       // Find the distance between now and the count down date
       var distance = countDownDate - now;
+
+    
 
      // DATE 03
      if (distance <= 0) {
      // Set a new countdown date here
-     countDownDate = new Date("May 27, 2024 22:46:46").getTime();
+     countDownDate = new Date("June 1, 2024 22:23:26").getTime();
      distance = countDownDate - now;
- }
+
+     showDeathMessage();
+     showRectangle();
+
+
+}
+
+
+
+
+
 
     // DATE 04
     if (distance <= 0) {
      // Set a new countdown date here
-     countDownDate = new Date("June 1, 2024 04:40:09").getTime();
+     countDownDate = new Date("June 6, 2024 05:16:52").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
+
+
 
     // DATE 05
     if (distance <= 0) {
     // Set a new countdown date here
-    countDownDate = new Date("June 5, 2024 10:33:32").getTime();
+    countDownDate = new Date("June 14, 2024 19:03:44").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
 
- 
+
     // DATE 06
     if (distance <= 0) {
     // Set a new countdown date here
-    countDownDate = new Date("June 9, 2024 17:26:58").getTime();
+    countDownDate = new Date("June 19, 2024 01:57:10").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
 
 
     // DATE 07
     if (distance <= 0) {
     // Set a new countdown date here
-    countDownDate = new Date("June 13, 2024 23:20:21").getTime();
+    countDownDate = new Date("June 23, 2024 08:50:36").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
 
- 
+
     // DATE 08
     if (distance <= 0) {
     // Set a new countdown date here
-    countDownDate = new Date("June 18, 2024 05:13:47").getTime();
+    countDownDate = new Date("June 27, 2024 15:44:02 ").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
 
-  
+
     // DATE 09
     if (distance <= 0) {
     // Set a new countdown date here
-    countDownDate = new Date("June 22, 2024 11:07:13").getTime();
+    countDownDate = new Date("July 1, 2024 22:37:28").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
 
      // DATE 10
      if (distance <= 0) {
     // Set a new countdown date here
-    countDownDate = new Date("June 26, 2024 18:00:39").getTime();
+    countDownDate = new Date("July 6, 2024 05:20:54").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
 
- 
+
      // DATE 11
      if (distance <= 0) {
     // Set a new countdown date here
-    countDownDate = new Date("July 1, 2024 24:54:05").getTime();
+    countDownDate = new Date("July 10, 2024 12:13:50").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
+
+
 
      // DATE 12
      if (distance <= 0) {
     // Set a new countdown date here
-    countDownDate = new Date("July 5, 2024 06:47:31").getTime();
+    countDownDate = new Date("July 14, 2024, 19:07:16").getTime();
      distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
  }
 
-        // AUTOMATICALLY ADD 4 DAYS, 6 HOURS, 53 MINUTES, AND 26 SECONDS TO THE COUNTDOWN DATE (DIDN'T WORK)
-        // // If the countdown is over, add 4 days, 6 hours, 53 minutes, and 26 seconds to the countdown date
-        // if (distance <= 0) {
-        //     var newDate = new Date(countDownDate);
-        //     newDate.setDate(newDate.getDate() + 0);
-        //     newDate.setHours(newDate.getHours() + 0);
-        //     newDate.setMinutes(newDate.getMinutes() + 0);
-        //     newDate.setSeconds(newDate.getSeconds() + 20);
-        //     countDownDate = newDate.getTime();
-        //     distance = countDownDate - now;
-        // }
+ 
+     // DATE 13
+     if (distance <= 0) {
+    // Set a new countdown date here
+    countDownDate = new Date("July 19, 2024, 02:00:42").getTime();
+     distance = countDownDate - now;
+
+     showDeathMessage();
+     showRectangle();
+ }
+
 
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
@@ -233,28 +406,92 @@
 
 
 <body>
-  
-   
+
+
     <span class="container">
-        <div class="triple-column" id="rec"></div>
-
-        <h2 class="triple-column">†&nbsp&nbsp&nbspHER TIME LE<span style="letter-spacing: .051em;">FT&nbsp&nbsp&nbsp†</h2>
+            <h2 class="triple-column">†&nbsp&nbsp&nbspHER TIME LE<span style="letter-spacing: .051em;">FT&nbsp&nbsp&nbsp†</h2>
             <p id="todaysDate" class="triple-column"></p>
-       <div class="triple-column"></div>
 
-<h1 class="double-column">A Man Will Kill a Woman Every 4 Days, 6 Hours, 53 Minutes, and 26 Seconds</h1>
-   
-<p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim."
-        </p>
+            <div class="countdown-container triple-column">
+                <p id="days" class="countdown-element"></p>
+                <p id="hours" class="countdown-element"></p>
+                <p id="minutes" class="countdown-element"></p>
+                <p id="seconds" class="countdown-element"></p>
+            </div>
+            
+<div class="triple-column"><h1>In Australia a Man Will Kill <br> a Woman Every 4 Days, 6 Hours, 53 Minutes, and 26 Seconds</h1></div>
 
-<div class="countdown-container triple-column">
-    <p id="days" class="countdown-element"></p> 
-    <p id="hours" class="countdown-element"></p>
-    <p id="minutes" class="countdown-element"></p>
-    <p id="seconds" class="countdown-element"></p>
+
+
+<p class="triple-column header">31 dead this year. To those women and girls, you deserved better</p>
+
+
+
+
+<div class="dagger triple-column" style="justify-content: center; padding-top: 0;">
+    <span>† † † † †</span>
 </div>
 
+<div class="dagger triple-column" style="justify-content: center;">
+    <span>† † † † †</span>
+</div>
+
+
+<div class="dagger triple-column" style="justify-content: center;">
+    <span>† † † † †</span>
+</div>
+
+
+<div class="dagger triple-column" style="justify-content: center;">
+    <span>† † † † †</span>
+</div>
+
+
+<div class="dagger triple-column" style="justify-content: center;">
+    <span>† † † † †</span>
+</div>
+
+
+<div class="dagger triple-column" style="justify-content: center;">
+    <span>† † † † †</span>
+</div>
+
+
+<div class="dagger triple-column" style="justify-content: center;">
+    <span>†</span>
+</div>
+
+<p class="double-column" style="line-height: 200%;">
+    <span style="font-weight: bold;">DONATE</span>
+    <br>
+    <a  href="https://www.facebook.com/DestroyTheJoint/" target="_blank">Destroy the Joint</a>
+    <br>
+    <a  href="https://australianfemicidewatch.org/database/" target="_blank">Red Heart Campaign</a>
+    <br>
+    <a  href="https://www.wagec.org.au/" target="_blank">Women's & Girls' Emergency Centre</a>
+    <br>
+    <a href="https://www.whiteribbon.org.au/" target="_blank">White Ribbon Australia</a>
+
+    
+</p>
+
+<p style="line-height: 200%; text-align: left;">
+    <span style="font-weight: bold;">SUPPORT</span>
+    <br>
+    <a  href="https://www.1800respect.org.au/" target="_blank">1800 RESPECT</a>
+    <br>
+    <a  href="https://www.lifeline.org.au/" target="_blank">Lifeline 13 11 14</a>
+    <br><br>
+    <span style="font-weight: bold;">CREDITS</span>
+    <br>
+    <a   href="https://www.facebook.com/DestroyTheJoint/" target="_blank">Statistics: Destroy the Joint</a>
+    <br>
+    <a  href="https://velvetyne.fr/degheest/latitude.html" target="_blank">Typeface: Latitude</a>
+   
+    <br>
+    <a  href="https://ashleabanon.com" target="_blank">Design: Ashlea Banon</a>
+    
+</p>
 
 
 
@@ -266,52 +503,18 @@
 <script>
    var today = new Date();
     var date = today.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    document.getElementById("todaysDate").innerHTML = date;   
+    document.getElementById("todaysDate").innerHTML = date;
  </script>
- 
-    
+
+
+
+<div id="fullscreen-rectangle" style="opacity: 0;"></div>
+<div id="death-message" style="opacity: 0;">May she rest in peace.</div>
 
 
 
 
 
 
-  
 </body>
 </html>
-<!-- // Get the current time as the start time
-var startTime = new Date();
-
-// Calculate the end time as 4 days, 6 hours, 53 minutes, and 26 seconds from the start time
-var endTime = new Date(startTime.getTime());
-endTime.setSeconds(endTime.getSeconds() + 26);
-endTime.setMinutes(endTime.getMinutes() + 53);
-endTime.setHours(endTime.getHours() + 6);
-endTime.setDate(endTime.getDate() + 4);
-
-// Update the count down every 1 second
-var countdownInterval = setInterval(function() {
-    // Get the current time
-    var now = new Date().getTime();
-
-    // Find the distance between now and the end time
-    var distance = endTime - now;
-
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-
-    // Display the result in the element with id="countdown"
-    document.getElementById("seconds").innerHTML = days + ":" + hours + ":" + minutes + ":" + seconds;
-
-    // If the count down is finished, reset the end time to 4 days, 6 hours, 53 minutes, and 26 seconds from now
-    if (distance < 0) {
-        endTime = new Date(now.getTime());
-        endTime.setSeconds(endTime.getSeconds() + 26);
-        endTime.setMinutes(endTime.getMinutes() + 53);
-        endTime.setHours(endTime.getHours() + 6);
-        endTime.setDate(endTime.getDate() + 4);
-    }
-}, 1000); -->
